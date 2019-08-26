@@ -1,0 +1,254 @@
+body {
+font: 12px Tahoma;
+background: #fff;
+color: #888;
+margin: auto;
+max-width: 640px;
+}
+
+a:link, a:visited {
+color: #ff9900;
+}
+
+a:hover {
+color: #ff1919;
+}
+
+input, textarea, select {
+color: #aaa;
+margin: 1px;
+border: 1px solid #e0e0e0;
+}
+
+input[type='submit'] {
+background: #ffaa00 url(images/orange.png) repeat-x 50% top;
+padding: 2px;
+color: #fff;
+border: 1px solid #fa0;
+}
+
+form {
+margin: 0px;
+padding: 0px;
+}
+
+h1, h2, h3 {
+margin: 0;
+padding: 0;
+}
+
+h1 {
+font: 12px Tahoma, Geneva, Kalimati, sans-serif;
+font-weight: bold;
+font-style: italic;
+}
+
+h2 {
+font: 12px Arial;
+font-weight: bold;
+}
+
+h3 {
+font: 12px Tahoma;
+font-weight: normal;
+}
+
+/* Header and Footer */
+.header, .footer {
+background: #ffaa00 url(images/orange.png) repeat-x 50% top;
+color: #fff;
+padding: 2px;
+}
+
+.header:before, .footer:before {
+content: url(images/ico.png);
+float: right;
+margin: -5px -2px 0px 0px;
+}
+
+.header span {
+padding: 4px;
+border-right: 1px solid #ffaa00;
+}
+
+.header a, .footer a {
+color: #fff;
+border-bottom: 1px dotted #fff;
+}
+
+.main {
+background: #ffffc6;
+margin: 1px;
+padding: 2px;
+border: 1px solid #ffdd00;
+}
+
+/* Menu */
+.title {
+background: #ededed url(images/title.gif) repeat-x 50% top;
+margin: 1px;
+padding: 2px;
+border: solid 1px #d9d9d9;
+}
+
+.menu {
+color: #696969;
+background: url(images/menu.gif) repeat-x 50% top;
+margin: 1px;
+padding: 2px;
+border: solid 1px #d9d9d9;
+}
+
+.menu span {
+color: #aaa;
+}
+
+.status {
+color: #80a0dd;
+background: #d5dff0;
+margin: 1px;
+padding: 2px;
+border: 1px solid #b5c7ff;
+}
+
+/* Status */
+.msg {
+color: #4dbf9a;
+background: #e3ffe3;
+margin: 1px;
+padding: 2px;
+border: 1px solid #cecece;
+}
+
+.err {
+color: #fd4646;
+background: #fff0f0;
+margin: 1px;
+padding: 2px;
+border: 1px solid #ffd0d0;
+}
+
+.on {
+color: #47a000;
+}
+
+.off {
+color: #ff1d00;
+}
+
+/* Form */
+.page {
+color: #aaa;
+margin: 1px;
+padding: 2px;
+border: solid 1px #d9d9d9;
+}
+
+.quote {
+margin: 4px 4px 4px 8px;
+border-bottom: 1px solid #d9d9d9;
+border-left: 4px solid #d9d9d9;
+padding: 2px;
+}
+
+.disable {
+background: #e4e4e3;
+border: 1px solid #e3e3e3;
+border-color: #aaa #999 #888;
+margin: 0;
+}
+
+.screenshot {
+margin: 0px 5px 5px 5px;
+border: 1px solid #ff9900;
+width: 83px;
+height: 110px;
+padding: 1px;
+}
+
+.input {
+width: 145px;
+height: 15px;
+}
+
+.textarea {
+width: 145px;
+height: 79px;
+}
+
+.line {
+border-top: 1px dotted #cacaca;
+font-size: xx-small;
+margin: 3px 2px 2px 2px;
+}
+
+.line a:link, .line a:visited {
+text-decoration: none;
+}
+
+.content {
+margin: 1px;
+font-size: 0px;
+}
+
+.content input {
+margin: 1px;
+}
+
+.content a {
+font-size: small;
+margin: 1px;
+padding: 2px;
+border: 1px solid #e0e0e0;
+border-bottom: 1px solid #fff;
+color: #888
+}
+
+/* Table */
+table.post {
+width: 100%;
+}
+
+td.icon {
+background: #ededed url(images/title.gif) repeat-x 50% top;
+width: 15px;
+height: 15px;
+vertical-align: top;
+text-align: center;
+border: 1px solid #d9d9d9;
+}
+
+td.list1, td.list2 {
+width: 10%;
+padding: 2px;
+text-align: center;
+font-weight: bold;
+vertical-align: top;
+}
+
+td.list1 {
+border-left: 2px solid #008000;
+background: #f2f2f2;
+}
+
+td.list2 {
+border-left: 2px solid #ff0000;
+background: #fbfbfb;
+}
+
+td.row1, td.row2 {
+width: auto;
+padding: 2px;
+}
+
+td.row1 {
+background: #fbfbfb;
+border-right: 2px solid #ff0000;
+}
+
+td.row2 {
+background: #f2f2f2;
+border-right: 2px solid #008000;
+}
+
+/** Copyright (c) 2012 Simplewap **/
