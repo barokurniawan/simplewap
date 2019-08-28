@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Entity\QueryFilter;
 use App\ShoutboxModel;
 use Illuminate\Http\Request;
 use App\Entity\ShoutboxEntity;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Jenssegers\Agent\Agent;
 
 class ShoutboxController extends Controller
 {
     function createShoutHandler(Request $req)
     {
-        $redirectTo = $req->query("redirect", "main");
+        $redirectTo = $req->query("redirect", "welcome_page");
         $validator = Validator::make($req->all(), [
             'name' => 'required|max:15',
             'text' => 'required|max:140',
@@ -38,5 +40,17 @@ class ShoutboxController extends Controller
         $info = ShoutboxModel::add($item);
         $message = ($info) ? "Saved!" : "Failed";
         return Redirect::route($redirectTo)->with('responseInfo', $message);
+    }
+
+    function indexHandler(){
+        $filter = new QueryFilter();
+        $filter->setLimit(8);
+
+        $items = [
+            "uaParser" => new Agent(),
+            "list_shout" => ShoutboxModel::advanceShowList($filter)
+        ];
+
+        return view("shoutbox.index", $items);
     }
 }

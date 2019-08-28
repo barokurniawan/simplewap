@@ -8,7 +8,7 @@
 </div>
 @endif
 
-<form action="action/new-shout?redirect=welcome_page" method="post">
+<form action="action/new-shout?redirect=shoutbox" method="post">
     {{ csrf_field() }}
     <div class="menu">
         <table class="post">

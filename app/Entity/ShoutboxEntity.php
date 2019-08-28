@@ -28,17 +28,17 @@ class ShoutboxEntity
     }
     function setName(string $name = null)
     {
-        $this->name = $name;
+        $this->name = strip_tags($name);
         return $this;
     }
     function setUrl(string $url = null)
     {
-        $this->url = $url;
+        $this->url = strip_tags($url);
         return $this;
     }
     function setText(string $text = null)
     {
-        $this->text = $text;
+        $this->text = strip_tags($text);
         return $this;
     }
     function setIcon(int $icon = null)

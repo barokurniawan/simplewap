@@ -34,8 +34,10 @@
 
     @yield('page-content')
 
-    @component('component.bottom-section')
-    @endcomponent
+    @if (isset($bottom_list))
+        @component('component.bottom-section', ["bottom_list" => $bottom_list])
+        @endcomponent
+    @endif
 
     @component('component.footer')
     @endcomponent
