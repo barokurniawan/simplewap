@@ -2,7 +2,7 @@
 @section('page-content')
 
 @if ($errors->any())
-<div class="status">
+<div class="err">
     <h3>Error : </h3>
     &bull; {{ $errors->first() }}
 </div>
