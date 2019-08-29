@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Entity\QueryFilter;
 use App\ShoutboxModel;
+use App\Entity\QueryFilter;
+use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use App\Entity\ShoutboxEntity;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
-use Jenssegers\Agent\Agent;
 
 class ShoutboxController extends Controller
 {
@@ -42,7 +42,8 @@ class ShoutboxController extends Controller
         return Redirect::route($redirectTo)->with('responseInfo', $message);
     }
 
-    function indexHandler(){
+    function indexHandler()
+    {
         $filter = new QueryFilter();
         $filter->setLimit(8);
 

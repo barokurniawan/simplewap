@@ -83,7 +83,7 @@
             <div class="status">Tidak ada pesan.</div>
         @endforelse
 
-        @if (strlen($list_shout->links()) > 0)
+        @if ($list_shout->links() != "")
             <tr class="asdasd">
                 <td class="menu" colspan="2" style="text-align:center">
                     {{ $list_shout->links() }}
