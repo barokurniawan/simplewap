@@ -1,0 +1,46 @@
+version: '2'
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    container_name: simplewap_web
+    volumes:
+      - ./:/var/www
+    ports:
+      - "8000:80"
+    links:
+      - app
+
+  app:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    container_name: simplewap_app
+    volumes:
+      - ./:/var/www
+    links:
+      - database
+    # environment:
+    #   - "DB_PORT=3306"
+    #   - "DB_HOST=database"
+
+  database:
+    image: mysql:5.6
+    container_name: simplewap_mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: udanup
+        MYSQL_DATABASE: db_simplewap
+    volumes:
+      - /opt/mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  redis:
+      build:
+        context: ./
+        dockerfile: redis.dockerfile
+      container_name: simplewap_redis
+      image: redis:5.0.3-alpine3.8
+      ports:
+        - 6379:6379
