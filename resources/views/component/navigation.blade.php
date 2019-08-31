@@ -6,6 +6,6 @@
         <a href="shoutbox/">Shout</a>
     </span>
     <span>
-        <a href="news/">News</a>
+        <a href="blog/">Blog</a>
     </span>
 </div>

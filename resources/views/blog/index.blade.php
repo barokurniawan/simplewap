@@ -11,7 +11,7 @@
 @forelse ($articles as $item)
 <div class="title">
     <h1>
-        <a href="{{ sprintf("read/%s.html", $item->slug) }}" title="Test">{{ $item->title }}</a>
+        <a href="{{ sprintf("blog/read/%s.html", $item->slug) }}" title="Test">{{ $item->title }}</a>
     </h1>
 </div>
 

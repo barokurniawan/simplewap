@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Kurniawan\Entity\Blog;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class BlogModel extends Model
@@ -11,11 +10,6 @@ class BlogModel extends Model
     protected $table = 'articles';
     protected $primaryKey = 'id';
     public $incrementing = true;
-
-    public static function getTable()
-    {
-        return $this->table;
-    }
 
     public function category()
     {
@@ -40,6 +34,10 @@ class BlogModel extends Model
         $blogModel->description = $blog->getDescription();
         $blogModel->read_count = $blog->getReadCount();
         return $blogModel->save();
+    }
+
+    public static function getArticle(string $slug){
+        return BlogModel::where("slug", $slug)->first();
     }
 
     static function advanceShowList(\App\Entity\QueryFilter $filter)
