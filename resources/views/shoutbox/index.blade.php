@@ -14,7 +14,12 @@
         <table class="post">
             <tr>
                 <td style="width:50%">
-                    Nama :<br /><input autocomplete="off" type="text" name="name" style="width:90%" placeholder="nama">
+                    Nama :<br />
+                    @guest
+                    <input autocomplete="off" type="text" name="name" style="width:90%" placeholder="nama">
+                    @else
+                    <input type="text" name="name" style="width:90%" readonly value="{{ Auth::user()->name }}">
+                    @endguest
                 </td>
                 <td style=" width:50%">
                     Situs :<br /><input autocomplete="off" type="text" name="url" style="width:90%"
@@ -63,9 +68,9 @@
             <td class="title">
                 <b>
                     @if (!empty($item->url))
-                        <a href="external/redirect?u={{ urlencode($item->url) }}">{{ $item->name }}</a>                
+                    <a href="external/redirect?u={{ urlencode($item->url) }}">{{ $item->name }}</a>
                     @else
-                        {{ $item->name }}
+                    {{ $item->name }}
                     @endif
                 </b>
             </td>
@@ -80,17 +85,17 @@
             </td>
         </tr>
         @empty
-            <div class="status">Tidak ada pesan.</div>
+        <div class="status">Tidak ada pesan.</div>
         @endforelse
 
         @if ($list_shout->links() != "")
-            <tr class="asdasd">
-                <td class="menu" colspan="2" style="text-align:center">
-                    {{ $list_shout->links() }}
-                </td>
-            </tr>
+        <tr class="asdasd">
+            <td class="menu" colspan="2" style="text-align:center">
+                {{ $list_shout->links() }}
+            </td>
+        </tr>
         @endif
-        
+
     </tbody>
 </table>
 @endsection

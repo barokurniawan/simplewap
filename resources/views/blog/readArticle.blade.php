@@ -16,21 +16,20 @@
 @else
 
 <div class="title">
-    <h1>
-        <a href="{{ sprintf("blog/read/%s.html", $article->slug) }}" title="Test">{{ $article->title }}</a>
+    <h1 title="{{ $article->title }}">
+        {{ $article->title }}
     </h1>
 </div>
 
 <div class="menu">
     Kategori: <a href="{{ sprintf("blog/category/%s.html", $article->category->category_slug) }}"
         title="Umum">{{ $article->category->category_name }}</a>
-    <br />
-    <span>2012-01-01</span>
+    <span style="float: right">{{ date_format(new Datetime($article->created_at), "d/m/Y H:i") }}</span>
     <div class="line"></div>
     {{ $article->description }}
     <br />
     <br />
-    [Dibaca: <span>1</span>]
+    <span>[Dibaca: {{ $article->read_count }}]</span>
 </div>
 @endif
 
@@ -72,8 +71,12 @@
             <tbody>
                 <tr>
                     <td style="width:50%">
-                        Nama :<br><input required autocomplete="off" type="text" name="name" style="width:90%"
-                            placeholder="nama">
+                        Nama :<br>
+                        @guest
+                        <input autocomplete="off" type="text" name="name" style="width:90%" placeholder="nama">
+                        @else
+                        <input type="text" name="name" style="width:90%" readonly value="{{ Auth::user()->name }}">
+                        @endguest
                     </td>
                     <td style=" width:50%">
                         Situs :<br><input autocomplete="off" type="text" name="url" style="width:90%"
@@ -102,13 +105,15 @@
 <div class="title"><b>Kategori</b></div>
 <div class="menu">
     <img src="images/rss.png" alt="&raquo;" /> <a href="blog/rss.xml">RSS-Feed</a><br />
-    @forelse ($categories as $item)
+</div>
+
+@foreach ($categories as $item)
+<div class="menu">
     <img src="images/line.png" alt="&raquo;" />
     <a href="{{ sprintf("category/%s.html", $item->category_slug) }}"
         title="{{ $item->category_name }}">{{ $item->category_name }}</a>
     ({{ count($item->articles) }})<br />
-    @empty
-    @endforelse
 </div>
+@endforeach
 
 @endsection

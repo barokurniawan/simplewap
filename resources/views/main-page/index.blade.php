@@ -14,7 +14,12 @@
         <table class="post">
             <tr>
                 <td style="width:50%">
-                    Nama :<br /><input autocomplete="off" type="text" name="name" style="width:90%" placeholder="nama">
+                    Nama :<br />
+                    @guest
+                    <input autocomplete="off" type="text" name="name" style="width:90%" placeholder="nama">
+                    @else
+                    <input type="text" name="name" style="width:90%" readonly value="{{ Auth::user()->name }}">
+                    @endguest
                 </td>
                 <td style=" width:50%">
                     Situs :<br /><input autocomplete="off" type="text" name="url" style="width:90%"
@@ -103,8 +108,8 @@
     <div class="menu">
         Kategori: <a href="{{ sprintf("blog/category/%s.html", $new_article->category->category_slug) }}"
             title="Umum">{{ $new_article->category->category_name }}</a>
-        <br>
-        <span>01/01/2019 00:00</span>
+        <span style="float: right">{{ date_format(new Datetime($new_article->created_at), "d/m/Y H:i") }}</span>
+
         <div class="line"></div>
         {{ strip_tags(substr($new_article->description, 250)) }} ...
         <br>
