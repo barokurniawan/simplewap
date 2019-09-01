@@ -30,8 +30,8 @@
     @component('component.navigation')
     @endcomponent
 
-    @component('component.warm-welcome')
-    @endcomponent
+    {{-- @component('component.warm-welcome')
+    @endcomponent --}}
 
     @yield('page-content')
 
