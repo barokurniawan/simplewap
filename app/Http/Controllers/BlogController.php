@@ -7,7 +7,6 @@ use App\MenuModel;
 use App\CategoryModel;
 use App\Entity\QueryFilter;
 use Illuminate\Http\Request;
-use App\Kurniawan\Entity\Blog;
 use Illuminate\Support\Facades\View;
 
 class BlogController extends Controller
@@ -23,12 +22,13 @@ class BlogController extends Controller
         $output["bottom_list"] = MenuModel::showList();
         return View::make("blog.index", $output);
     }
-    
-    function readArticleHandler(Request $request, $slug){
+
+    function readArticleHandler(Request $request, $slug)
+    {
         $output = [];
 
         $output['article'] = BlogModel::getArticle($slug);
-        $output['categories'] = CategoryModel::showList();        
+        $output['categories'] = CategoryModel::showList();
         return View::make("blog.readArticle", $output);
     }
 }
