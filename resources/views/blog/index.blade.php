@@ -11,12 +11,13 @@
 @forelse ($articles as $item)
 <div class="title">
     <h1>
-        <a href="{{ sprintf("blog/read/%s.html", $item->slug) }}" title="{{ $item->title }}">{{ $item->title }}</a>
+        <a href="{{ sprintf(\App\BlogModel::URI_SINGLE_ARTICLE, $item->slug) }}"
+            title="{{ $item->title }}">{{ $item->title }}</a>
     </h1>
 </div>
 
 <div class="menu">
-    Kategori: <a href="{{ sprintf("blog/category/%s.html", $item->category->category_slug) }}"
+    Kategori: <a href="{{ sprintf(\App\BlogModel::URI_ARTICLE_BY_CATEGORY, $item->category->category_slug) }}"
         title="{{ $item->category->category_name }}">{{ $item->category->category_name }}</a>
     <br />
     <span>{{ date_format(new Datetime($item->created_at), "d/m/Y H:i") }}</span>
@@ -25,7 +26,7 @@
     <br />
     <br />
     [Dibaca: <span>{{ $item->read_count }}</span>]
-    [Komentar: <a href="{{ sprintf("blog/read/%s.html", $item->slug) }}"
+    [Komentar: <a href="{{ sprintf(\App\BlogModel::URI_SINGLE_ARTICLE, $item->slug) }}"
         title="Comments: {{ $item->title }}">{{ count($item->comments) }}</a>]<br />
 </div>
 @empty
@@ -48,7 +49,7 @@
 @foreach ($categories as $item)
 <div class="menu">
     <img src="images/line.png" alt="&raquo;" />
-    <a href="{{ sprintf("category/%s.html", $item->category_slug) }}"
+    <a href="{{ sprintf(\App\BlogModel::URI_ARTICLE_BY_CATEGORY, $item->category_slug) }}"
         title="{{ $item->category_name }}">{{ $item->category_name }}</a>
     ({{ count($item->articles) }})<br />
 </div>

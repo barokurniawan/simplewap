@@ -23,6 +23,26 @@ class BlogController extends Controller
         return View::make("blog.index", $output);
     }
 
+    function articleByCategoryHandler(Request $request, $slug)
+    {
+        $article_id = CategoryModel::getCategoryIdBySlug($slug);
+        if ($article_id == null) {
+            return redirect('home')->withErrors('Kategori tidak ditemukan');
+        }
+
+        $output = [];
+        $filter = new QueryFilter();
+        $filter->setLimit(5);
+        $filter->setWhereClause([
+            ["category_id", "=", $article_id]
+        ]);
+
+        $output['articles'] = BlogModel::advanceShowList($filter);
+        $output['categories'] = CategoryModel::showList();
+        $output["bottom_list"] = MenuModel::showList();
+        return View::make("blog.index", $output);
+    }
+
     function readArticleHandler(Request $request, $slug)
     {
         $output = [];

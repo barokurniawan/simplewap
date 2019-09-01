@@ -22,7 +22,7 @@
 </div>
 
 <div class="menu">
-    Kategori: <a href="{{ sprintf("blog/category/%s.html", $article->category->category_slug) }}"
+    Kategori: <a href="{{ sprintf(\App\BlogModel::URI_ARTICLE_BY_CATEGORY, $article->category->category_slug) }}"
         title="Umum">{{ $article->category->category_name }}</a>
     <span style="float: right">{{ date_format(new Datetime($article->created_at), "d/m/Y H:i") }}</span>
     <div class="line"></div>
@@ -110,7 +110,7 @@
 @foreach ($categories as $item)
 <div class="menu">
     <img src="images/line.png" alt="&raquo;" />
-    <a href="{{ sprintf("category/%s.html", $item->category_slug) }}"
+    <a href="{{ sprintf(\App\BlogModel::URI_ARTICLE_BY_CATEGORY, $item->category_slug) }}"
         title="{{ $item->category_name }}">{{ $item->category_name }}</a>
     ({{ count($item->articles) }})<br />
 </div>

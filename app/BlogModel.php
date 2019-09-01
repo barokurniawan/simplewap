@@ -11,6 +11,10 @@ class BlogModel extends Model
     protected $primaryKey = 'id';
     public $incrementing = true;
 
+    // blog/read/(article slug).html
+    const URI_SINGLE_ARTICLE = "blog/read/%s.html";
+    const URI_ARTICLE_BY_CATEGORY = "category/%s.html";
+
     public function category()
     {
         return $this->hasOne("App\CategoryModel", "category_id", "category_id");
@@ -48,13 +52,17 @@ class BlogModel extends Model
 
     public static function advanceShowList(\App\Entity\QueryFilter $filter)
     {
-        $output = BlogModel::orderBy("created_at", "asc")
-            ->simplePaginate($filter->getLimit());
+        $bm = new BlogModel;
+        if ($filter->getWhereClause() != null) {
+            $bm = $bm::where($filter->getWhereClause());
+        }
+
+        $output = $bm->orderBy("created_at", "desc")->orderBy("id", "desc")->simplePaginate($filter->getLimit());
         return $output;
     }
 
     public static function getNewArticle()
     {
-        return BlogModel::orderBy("created_at", "asc")->first();
+        return BlogModel::orderBy("created_at", "desc")->first();
     }
 }

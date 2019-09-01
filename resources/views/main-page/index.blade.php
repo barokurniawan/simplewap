@@ -101,12 +101,13 @@
 <div class="menu">
     <div class="title">
         <h1>
-            <a href="{{ sprintf("blog/read/%s.html", $new_article->slug) }}"
+            <a href="{{ sprintf(\App\BlogModel::URI_SINGLE_ARTICLE, $new_article->slug) }}"
                 title="{{ $new_article->title }}">{{ $new_article->title }}</a>
         </h1>
     </div>
     <div class="menu">
-        Kategori: <a href="{{ sprintf("blog/category/%s.html", $new_article->category->category_slug) }}"
+        Kategori: <a
+            href="{{ sprintf(\App\BlogModel::URI_ARTICLE_BY_CATEGORY, $new_article->category->category_slug) }}"
             title="Umum">{{ $new_article->category->category_name }}</a>
         <span style="float: right">{{ date_format(new Datetime($new_article->created_at), "d/m/Y H:i") }}</span>
 
@@ -115,7 +116,7 @@
         <br>
         <br>
         [Dibaca: <span>{{ $new_article->read_count }}</span>]
-        [Komentar: <a href="{{ sprintf("blog/read/%s.html", $new_article->slug) }}"
+        [Komentar: <a href="{{ sprintf(\App\BlogModel::URI_SINGLE_ARTICLE, $new_article->slug) }}"
             title="Comments: {{ $new_article->title }}">{{ count($new_article->comments) }}</a>]<br>
     </div>
 </div>

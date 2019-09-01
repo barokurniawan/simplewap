@@ -18,6 +18,16 @@ class CategoryModel extends Model
         return $this->hasMany("App\BlogModel", "category_id", "category_id");
     }
 
+    public static function getCategoryIdBySlug(string $slug)
+    {
+        $item = CategoryModel::where("category_slug", "=", $slug)->first();
+        if ($item == null) {
+            return null;
+        }
+
+        return $item->category_id;
+    }
+
     public static function showList()
     {
         $fromCache = Cache::get(CategoryModel::SHOWLIST_CACHE_KEY);

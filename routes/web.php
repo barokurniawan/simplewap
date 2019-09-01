@@ -11,6 +11,7 @@
 |
 */
 
+use App\CategoryModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ Route::get('/shoutbox', 'ShoutboxController@indexHandler')->name('shoutbox');
 Route::get('/blog', 'BlogController@indexHandler')->name('blog');
 
 Route::get('/blog/read/{slug}.html', 'BlogController@readArticleHandler');
+Route::get('/category/{slug}.html', 'BlogController@articleByCategoryHandler');
 
 Route::post('/action/new-shout', "ShoutboxController@createShoutHandler");
 Route::post('/action/new-comment', "CommentController@createCommentHandler");
