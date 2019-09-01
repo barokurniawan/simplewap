@@ -60,6 +60,45 @@
     </tbody>
 </table>
 
+<div class="title"><b>Form Komentar</b></div>
+@if (session('responseInfo'))
+<div class="status">
+    {{ session('responseInfo') }}
+</div>
+@endif
+<div class="menu">
+    <form action="action/new-comment?redirect=back" method="post">
+        <table class="post">
+            <tbody>
+                <tr>
+                    <td style="width:50%">
+                        Nama :<br><input required autocomplete="off" type="text" name="name" style="width:90%"
+                            placeholder="nama">
+                    </td>
+                    <td style=" width:50%">
+                        Situs :<br><input autocomplete="off" type="text" name="url" style="width:90%"
+                            placeholder="http://">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="width:100%">
+                        Pesan :<br>
+                        <textarea required autocomplete="off" type="text" name="comment" style="width:95%"
+                            rows="3"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="content" colspan="2">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="article_id" value="{{ $article->id }}">
+                        <input type="submit" value="Post">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
 <div class="title"><b>Kategori</b></div>
 <div class="menu">
     <img src="images/rss.png" alt="&raquo;" /> <a href="blog/rss.xml">RSS-Feed</a><br />

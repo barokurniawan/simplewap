@@ -61,9 +61,9 @@
             <td class="title">
                 <b>
                     @if (!empty($item->url))
-                        <a href="external/redirect?u={{ urlencode($item->url) }}">{{ $item->name }}</a>                
+                    <a href="external/redirect?u={{ urlencode($item->url) }}">{{ $item->name }}</a>
                     @else
-                        {{ $item->name }}
+                    {{ $item->name }}
                     @endif
                 </b>
             </td>
@@ -78,17 +78,17 @@
             </td>
         </tr>
         @empty
-            <div class="status">Tidak ada pesan.</div>
+        <div class="status">Tidak ada pesan.</div>
         @endforelse
 
         @if (strlen($list_shout->links()) > 0)
-            <tr class="asdasd">
-                <td class="menu" colspan="2" style="text-align:center">
-                    {{ $list_shout->links() }}
-                </td>
-            </tr>
+        <tr class="asdasd">
+            <td class="menu" colspan="2" style="text-align:center">
+                {{ $list_shout->links() }}
+            </td>
+        </tr>
         @endif
-        
+
     </tbody>
 </table>
 @endsection

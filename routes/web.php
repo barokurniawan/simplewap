@@ -23,5 +23,6 @@ Route::get('/blog/read/{slug}.html', 'BlogController@readArticleHandler');
 Route::get('/', "ApplicationController@welcomePageHandler")->name("welcome_page");
 
 Route::post('/action/new-shout', "ShoutboxController@createShoutHandler");
+Route::post('/action/new-comment', "CommentController@createCommentHandler");
 
 Route::get("/external/redirect", "RedirectController@externalRedirectHandler");
