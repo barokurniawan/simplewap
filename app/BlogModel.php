@@ -52,4 +52,9 @@ class BlogModel extends Model
             ->simplePaginate($filter->getLimit());
         return $output;
     }
+
+    public static function getNewArticle()
+    {
+        return BlogModel::orderBy("created_at", "asc")->first();
+    }
 }

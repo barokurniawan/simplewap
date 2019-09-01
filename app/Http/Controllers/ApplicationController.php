@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\BlogModel;
+use App\MenuModel;
 use App\ShoutboxModel;
 use App\Entity\QueryFilter;
-use App\MenuModel;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -19,7 +20,8 @@ class ApplicationController extends Controller
         $items = [
             "uaParser" => new Agent(),
             "list_shout" => ShoutboxModel::advanceShowList($filter),
-            "bottom_list" => MenuModel::showList()
+            "bottom_list" => MenuModel::showList(),
+            "new_article" => BlogModel::getNewArticle()
         ];
 
         return View::make("main-page.index", $items);

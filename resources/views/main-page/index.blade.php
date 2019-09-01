@@ -91,4 +91,28 @@
 
     </tbody>
 </table>
+@if ($new_article != null)
+<div class="title"><b>Artikel Baru</b></div>
+<div class="menu">
+    <div class="title">
+        <h1>
+            <a href="{{ sprintf("blog/read/%s.html", $new_article->slug) }}"
+                title="{{ $new_article->title }}">{{ $new_article->title }}</a>
+        </h1>
+    </div>
+    <div class="menu">
+        Kategori: <a href="{{ sprintf("blog/category/%s.html", $new_article->category->category_slug) }}"
+            title="Umum">{{ $new_article->category->category_name }}</a>
+        <br>
+        <span>01/01/2019 00:00</span>
+        <div class="line"></div>
+        {{ strip_tags(substr($new_article->description, 250)) }} ...
+        <br>
+        <br>
+        [Dibaca: <span>{{ $new_article->read_count }}</span>]
+        [Komentar: <a href="{{ sprintf("blog/read/%s.html", $new_article->slug) }}"
+            title="Comments: {{ $new_article->title }}">{{ count($new_article->comments) }}</a>]<br>
+    </div>
+</div>
+@endif
 @endsection
