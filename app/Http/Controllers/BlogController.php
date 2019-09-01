@@ -26,9 +26,10 @@ class BlogController extends Controller
     function readArticleHandler(Request $request, $slug)
     {
         $output = [];
-
         $output['article'] = BlogModel::getArticle($slug);
         $output['categories'] = CategoryModel::showList();
+        $output["bottom_list"] = MenuModel::showList();
+
         return View::make("blog.readArticle", $output);
     }
 }
