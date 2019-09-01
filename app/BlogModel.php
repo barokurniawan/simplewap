@@ -16,6 +16,11 @@ class BlogModel extends Model
         return $this->hasOne("App\CategoryModel", "category_id", "category_id");
     }
 
+    public function comments()
+    {
+        return $this->hasMany("App\CommentModel", "article_id", "id");
+    }
+
     public function createArticle(Blog $blog)
     {
         $blogModel = new BlogModel;
@@ -36,11 +41,12 @@ class BlogModel extends Model
         return $blogModel->save();
     }
 
-    public static function getArticle(string $slug){
+    public static function getArticle(string $slug)
+    {
         return BlogModel::where("slug", $slug)->first();
     }
 
-    static function advanceShowList(\App\Entity\QueryFilter $filter)
+    public static function advanceShowList(\App\Entity\QueryFilter $filter)
     {
         $output = BlogModel::orderBy("created_at", "asc")
             ->simplePaginate($filter->getLimit());

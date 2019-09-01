@@ -38,8 +38,6 @@
             <tr>
                 <td class="content" colspan="2">
                     <input type="submit" value="Shout">
-                    <a href="smiles.php">Smiles</a>
-                    <a href="bbcode.php">BB-Code</a>
                 </td>
             </tr>
         </table>

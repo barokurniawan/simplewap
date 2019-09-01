@@ -22,25 +22,53 @@
 </div>
 
 <div class="menu">
-    Kategori: <a href="{{ sprintf("blog/category/%s.html", $article->category->category_slug) }}" title="Umum">{{ $article->category->category_name }}</a>
+    Kategori: <a href="{{ sprintf("blog/category/%s.html", $article->category->category_slug) }}"
+        title="Umum">{{ $article->category->category_name }}</a>
     <br />
     <span>2012-01-01</span>
     <div class="line"></div>
-        {{ $article->description }}
+    {{ $article->description }}
     <br />
     <br />
-    [Dibaca: <span>1</span>] [Komentar: 1]<br />
-</div>    
+    [Dibaca: <span>1</span>]
+</div>
 @endif
+
+<div class="title"><b>Komentar ({{ count($article->comments) }})</b></div>
+<table class="post">
+    <tbody>
+        @forelse ($article->comments as $comment)
+        <tr>
+            <td class="icon"><img src="assets/icons/male.png" alt="*"></td>
+            <td class="title">
+                @if ($comment->url != "")
+                <a href="{{ $comment->url }}"><b>{{ $comment->name }}</b></a>
+                @else
+                <b>{{ $comment->name }}</b>
+                @endif
+            </td>
+        </tr>
+        <tr>
+            <td class="menu" colspan="2">
+                <div style="text-align:right">{{ date_format(new Datetime($comment->created_at), "d/m/Y") }}</div>
+                {{ $comment->comment }}
+            </td>
+        </tr>
+        @empty
+
+        @endforelse
+    </tbody>
+</table>
 
 <div class="title"><b>Kategori</b></div>
 <div class="menu">
-    <img src="images/rss.png" alt="&raquo;"/> <a href="blog/rss.xml">RSS-Feed</a><br />
+    <img src="images/rss.png" alt="&raquo;" /> <a href="blog/rss.xml">RSS-Feed</a><br />
     @forelse ($categories as $item)
-    <img src="images/line.png" alt="&raquo;"/> 
-    <a href="{{ sprintf("category/%s.html", $item->category_slug) }}" title="{{ $item->category_name }}">{{ $item->category_name }}</a> 
+    <img src="images/line.png" alt="&raquo;" />
+    <a href="{{ sprintf("category/%s.html", $item->category_slug) }}"
+        title="{{ $item->category_name }}">{{ $item->category_name }}</a>
     ({{ count($item->articles) }})<br />
-    @empty  
+    @empty
     @endforelse
 </div>
 
