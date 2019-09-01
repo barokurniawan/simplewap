@@ -18,6 +18,7 @@ class ApplicationController extends Controller
         $filter->setLimit(3);
 
         $items = [
+            "page_title" => "Home page",
             "uaParser" => new Agent(),
             "list_shout" => ShoutboxModel::advanceShowList($filter),
             "bottom_list" => MenuModel::showList(),
@@ -29,6 +30,8 @@ class ApplicationController extends Controller
 
     public function shoutboxPageHandler(Request $req)
     {
-        return View::make("shoutbox.index");
+        return View::make("shoutbox.index", [
+            "page_title" => "Shoutbox page"
+        ]);
     }
 }

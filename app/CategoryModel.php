@@ -28,6 +28,16 @@ class CategoryModel extends Model
         return $item->category_id;
     }
 
+    public static function getCategoryBySlug(string $slug)
+    {
+        $item = CategoryModel::where("category_slug", "=", $slug)->first();
+        if ($item == null) {
+            return null;
+        }
+
+        return $item;
+    }
+
     public static function showList()
     {
         $fromCache = Cache::get(CategoryModel::SHOWLIST_CACHE_KEY);

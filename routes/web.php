@@ -30,6 +30,10 @@ Route::post('/action/new-comment', "CommentController@createCommentHandler");
 
 Route::get("/external/redirect", "RedirectController@externalRedirectHandler");
 
+Route::get('/dashboard', function () {
+    return "asd";
+})->name("dashboard");
+
 Route::get('/logout', function () {
     Auth::guard()->logout();
     session()->invalidate();

@@ -21,6 +21,9 @@
     @else
     <div style="float: right">
         <span>
+            <a href="{{ route('dashboard') }}">Dashboard</a>
+        </span>
+        <span>
             <a href="{{ route('logout') }}">Keluar</a>
         </span>
     </div>

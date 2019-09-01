@@ -48,6 +48,7 @@ class ShoutboxController extends Controller
         $filter->setLimit(8);
 
         $items = [
+            "page_title" => "Shoutbox page",
             "uaParser" => new Agent(),
             "list_shout" => ShoutboxModel::advanceShowList($filter)
         ];

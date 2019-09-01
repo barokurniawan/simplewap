@@ -17,6 +17,7 @@ class BlogController extends Controller
         $filter = new QueryFilter();
         $filter->setLimit(5);
 
+        $output["page_title"] = "Blog page";
         $output['articles'] = BlogModel::advanceShowList($filter);
         $output['categories'] = CategoryModel::showList();
         $output["bottom_list"] = MenuModel::showList();
@@ -25,8 +26,8 @@ class BlogController extends Controller
 
     function articleByCategoryHandler(Request $request, $slug)
     {
-        $article_id = CategoryModel::getCategoryIdBySlug($slug);
-        if ($article_id == null) {
+        $category = CategoryModel::getCategoryBySlug($slug);
+        if ($category == null) {
             return redirect('home')->withErrors('Kategori tidak ditemukan');
         }
 
@@ -34,9 +35,10 @@ class BlogController extends Controller
         $filter = new QueryFilter();
         $filter->setLimit(5);
         $filter->setWhereClause([
-            ["category_id", "=", $article_id]
+            ["category_id", "=", $category->category_id]
         ]);
 
+        $output["page_title"] = sprintf("Kategori artikel %s", $category->category_name);
         $output['articles'] = BlogModel::advanceShowList($filter);
         $output['categories'] = CategoryModel::showList();
         $output["bottom_list"] = MenuModel::showList();
@@ -45,10 +47,16 @@ class BlogController extends Controller
 
     function readArticleHandler(Request $request, $slug)
     {
+        $article = BlogModel::getArticle($slug);
+        if ($article == null) {
+            return redirect('home')->withErrors("Artikel tidak ditemukan");
+        }
+
         $output = [];
-        $output['article'] = BlogModel::getArticle($slug);
+        $output['article'] = $article;
         $output['categories'] = CategoryModel::showList();
         $output["bottom_list"] = MenuModel::showList();
+        $output["page_title"] = $article->title;
 
         return View::make("blog.readArticle", $output);
     }

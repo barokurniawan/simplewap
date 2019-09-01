@@ -38,6 +38,10 @@ class BlogModel extends Model
     public function updateArticle(int $id, Blog $blog)
     {
         $blogModel = BlogModel::find($id);
+        if ($blogModel == null) {
+            return false;
+        }
+
         $blogModel->title = $blog->getTitle();
         $blogModel->slug = $blog->getSlug();
         $blogModel->description = $blog->getDescription();
