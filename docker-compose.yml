@@ -3,7 +3,7 @@ services:
   web:
     build:
       context: ./
-      dockerfile: web.dockerfile
+      dockerfile: docker/web.dockerfile
     container_name: simplewap_web
     volumes:
       - ./:/var/www
@@ -15,7 +15,7 @@ services:
   app:
     build:
       context: ./
-      dockerfile: app.dockerfile
+      dockerfile: docker/app.dockerfile
     container_name: simplewap_app
     volumes:
       - ./:/var/www
