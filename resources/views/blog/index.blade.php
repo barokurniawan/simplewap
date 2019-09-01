@@ -43,12 +43,15 @@
 <div class="title"><b>Kategori</b></div>
 <div class="menu">
     <img src="images/rss.png" alt="&raquo;" /> <a href="blog/rss.xml">RSS-Feed</a><br />
-    @forelse ($categories as $item)
-    <img src="images/line.png" alt="&raquo;" />
-    <a href="{{ $item->category_slug }}" title="Programming">{{ $item->category_name }}</a>
-    ({{ count($item->articles) }})<br />
-    @empty
-    @endforelse
 </div>
+
+@foreach ($categories as $item)
+<div class="menu">
+    <img src="images/line.png" alt="&raquo;" />
+    <a href="{{ sprintf("category/%s.html", $item->category_slug) }}"
+        title="{{ $item->category_name }}">{{ $item->category_name }}</a>
+    ({{ count($item->articles) }})<br />
+</div>
+@endforeach
 
 @endsection
