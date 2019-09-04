@@ -3,10 +3,10 @@
         <a href="./">Home</a>
     </span>
     <span>
-        <a href="./shoutbox/">Shout</a>
+        <a href="shoutbox/">Shout</a>
     </span>
     <span>
-        <a href="./blog/">Blog</a>
+        <a href="blog/">Blog</a>
     </span>
 
     @guest
