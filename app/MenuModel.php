@@ -13,9 +13,10 @@ class MenuModel extends Model
     public $incrementing = true;
     public $timestamps = false;
 
-    static function showList(){
+    static function showList()
+    {
         $fromCache = Cache::get(MenuModel::SHOWLIST_CACHE_KEY);
-        if ($fromCache == null){
+        if ($fromCache == null) {
             $items = MenuModel::orderBy("position", "asc")->get();
             Cache::put(MenuModel::SHOWLIST_CACHE_KEY, $items->toJson(), Cache::ONE_DAY);
             return $items;
