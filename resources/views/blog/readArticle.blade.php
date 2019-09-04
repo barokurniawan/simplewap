@@ -26,7 +26,7 @@
         title="Umum">{{ $article->category->category_name }}</a>
     <span style="float: right">{{ date_format(new Datetime($article->created_at), "d/m/Y H:i") }}</span>
     <div class="line"></div>
-    {{!! $article->description !!}}
+    {!! $article->description !!}
     <br />
     <br />
     <span>[Dibaca: {{ $article->read_count }}]</span>
