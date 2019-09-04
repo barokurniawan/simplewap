@@ -29,9 +29,6 @@
     @component('component.navigation')
     @endcomponent
 
-    {{-- @component('component.warm-welcome')
-    @endcomponent --}}
-
     @yield('page-content')
 
     @if (isset($bottom_list))

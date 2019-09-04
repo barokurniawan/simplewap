@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Kurniawan\Cache;
+use App\Kurniawan\Entity\Category;
 use Illuminate\Database\Eloquent\Model;
 
 class CategoryModel extends Model
@@ -16,6 +17,15 @@ class CategoryModel extends Model
     public function articles()
     {
         return $this->hasMany("App\BlogModel", "category_id", "category_id");
+    }
+
+    public function createCategory(Category $item)
+    {
+        $category = new CategoryModel;
+        $category->category_name = $item->getCategoryName();
+        $category->category_slug = $item->getCategorySlug();
+
+        return $category->save();
     }
 
     public static function getCategoryIdBySlug(string $slug)
@@ -36,6 +46,17 @@ class CategoryModel extends Model
         }
 
         return $item;
+    }
+
+    public static function advanceShowList(\App\Entity\QueryFilter $filter)
+    {
+        $bm = new CategoryModel;
+        if ($filter->getWhereClause() != null) {
+            $bm = $bm::where($filter->getWhereClause());
+        }
+
+        $output = $bm->orderBy("created_at", "desc")->simplePaginate($filter->getLimit());
+        return $output;
     }
 
     public static function showList()

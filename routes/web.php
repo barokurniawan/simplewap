@@ -11,7 +11,6 @@
 |
 */
 
-use App\CategoryModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +29,12 @@ Route::post('/action/new-comment', "CommentController@createCommentHandler");
 
 Route::get("/external/redirect", "RedirectController@externalRedirectHandler");
 
-Route::get('/dashboard', function () {
-    return "asd";
-})->name("dashboard");
+Route::middleware("auth")->group(function () {
+    Route::get('/dashboard', "PanelController@dashboardHandler")->name("dashboard");
+    Route::get("dashboard/master-category", "PanelController@masterCategoryHandler")->name("master_category");
+    Route::post("dashboard/master-category/create", "PanelController@createCategoryHandler");
+});
+
 
 Route::get('/logout', function () {
     Auth::guard()->logout();

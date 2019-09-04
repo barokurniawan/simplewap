@@ -1,3 +1,21 @@
+.table, .table thead, .table tbody{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td{
+    text-align: left; white-space: nowrap;
+    padding: 4px;
+}
+
+.table tbody tr:nth-of-type(odd){
+    background-color: #ddd;
+}
+
+.table-responsive{
+    overflow-x: auto;
+}
+
 ul.pagination {
     display: block;
 }
