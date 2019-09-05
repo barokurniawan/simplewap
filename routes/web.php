@@ -33,10 +33,10 @@ Route::middleware("auth")->group(function () {
     Route::get('/dashboard', "PanelController@dashboardHandler")->name("dashboard");
     Route::get("dashboard/master-category", "PanelController@masterCategoryHandler")->name("master_category");
     Route::post("dashboard/master-category/create", "PanelController@createCategoryHandler");
+    Route::post("dashboard/master-category/update", "PanelController@actionUpdateCategoryHandler");
     Route::get("dashboard/master-category/delete/{category_id}", "PanelController@deleteCategoryHandler");
-    Route::get("dashboard/master-category/update", "PanelController@updateCategoryHandler");
+    Route::get("dashboard/master-category/update/{category_id}", "PanelController@updateCategoryHandler");
 });
-
 
 Route::get('/logout', function () {
     Auth::guard()->logout();

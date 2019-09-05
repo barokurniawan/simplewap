@@ -8,6 +8,7 @@ use App\Entity\QueryFilter;
 use Illuminate\Http\Request;
 use App\Kurniawan\Entity\Category;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class PanelController extends Controller
@@ -39,10 +40,48 @@ class PanelController extends Controller
     {
         $info = CategoryModel::deleteCategory($category_id);
         if ($info) {
-            return back();
+            return Redirect::back();
         }
 
-        return back()->withErrors("Gagal menghapus kategori");
+        return Redirect::back()->withErrors("Gagal menghapus kategori");
+    }
+
+    function updateCategoryHandler($category_id)
+    {
+        $category = CategoryModel::getCategoryByID($category_id);
+        if (empty($category)) {
+            return Redirect::back()->withErrors("Kategori tidak ditemukan");
+        }
+
+        return View::make("dashboard.edit-master-category", [
+            "category" => $category
+        ]);
+    }
+
+    function actionUpdateCategoryHandler(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'category_name' => 'required|max:32',
+            'category_slug' => 'required|max:70',
+            'category_id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
+
+        $category = new Category();
+        $category->setCategoryId($request->input("category_id"));
+        $category->setCategoryName($request->input("category_name"));
+        $category->setCategorySlug($request->input("category_slug"));
+
+        $model = new CategoryModel;
+        $info = $model->updateCategory($category->getCategoryId(), $category);
+        if ($info == false) {
+            return Redirect::back()->withErrors("Gagal update categori");
+        }
+
+        return Redirect::route("master_category");
     }
 
     function createCategoryHandler(Request $request)
@@ -53,7 +92,7 @@ class PanelController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->withErrors($validator);
+            return Redirect::back()->withErrors($validator);
         }
 
         $model = new CategoryModel();
@@ -64,9 +103,9 @@ class PanelController extends Controller
         ));
 
         if ($info) {
-            return back();
+            return Redirect::back();
         }
 
-        return back()->withErrors("Tidak bisa menambahkan kategori");
+        return Redirect::back()->withErrors("Tidak bisa menambahkan kategori");
     }
 }

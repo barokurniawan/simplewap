@@ -50,6 +50,11 @@ class CategoryModel extends Model
         return $item;
     }
 
+    public static function getCategoryByID($category_id)
+    {
+        return CategoryModel::find($category_id);
+    }
+
     public static function advanceShowList(\App\Entity\QueryFilter $filter)
     {
         $bm = new CategoryModel;
@@ -88,5 +93,18 @@ class CategoryModel extends Model
     {
         $item = CategoryModel::find($category_id);
         return $item->delete();
+    }
+
+    public function updateCategory(int $category_id, Category $item)
+    {
+        $category = CategoryModel::find($category_id);
+        if (empty($category)) {
+            return false;
+        }
+
+        $category->category_name = $item->getCategoryName();
+        $category->category_slug = $item->getCategorySlug();
+
+        return $category->save();
     }
 }
