@@ -33,6 +33,8 @@ Route::middleware("auth")->group(function () {
     Route::get('/dashboard', "PanelController@dashboardHandler")->name("dashboard");
     Route::get("dashboard/master-category", "PanelController@masterCategoryHandler")->name("master_category");
     Route::post("dashboard/master-category/create", "PanelController@createCategoryHandler");
+    Route::get("dashboard/master-category/delete/{category_id}", "PanelController@deleteCategoryHandler");
+    Route::get("dashboard/master-category/update", "PanelController@updateCategoryHandler");
 });
 
 

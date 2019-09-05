@@ -52,8 +52,9 @@
                     <td>{{ date_format(new Datetime($item->created_at), "d/m/Y") }}</td>
                     <td>{{ $item->category_slug }}</td>
                     <td>
-                        <a href="">[E]</a> |
-                        <a href="">[D]</a>
+                        <a href="{{ sprintf(App\CategoryModel::LINK_UPDATE, $item->category_id) }}">[E]</a> |
+                        <a onclick="javascript: return confirm('Hapus kategori {{ $item->category_name }}?');"
+                            href="{{ sprintf(App\CategoryModel::LINK_DELETE, $item->category_id) }}">[D]</a>
                     </td>
                 </tr>
                 @empty

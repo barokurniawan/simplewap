@@ -13,6 +13,8 @@ class CategoryModel extends Model
     public $incrementing = true;
 
     const SHOWLIST_CACHE_KEY = "article:category";
+    const LINK_DELETE = "dashboard/master-category/delete/%s";
+    const LINK_UPDATE = "dashboard/master-category/update/%s";
 
     public function articles()
     {
@@ -80,5 +82,11 @@ class CategoryModel extends Model
         }
 
         return json_decode($fromCache);
+    }
+
+    public static function deleteCategory($category_id)
+    {
+        $item = CategoryModel::find($category_id);
+        return $item->delete();
     }
 }

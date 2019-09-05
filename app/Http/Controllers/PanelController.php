@@ -35,6 +35,16 @@ class PanelController extends Controller
         return View::make("dashboard.master-category", $items);
     }
 
+    function deleteCategoryHandler($category_id)
+    {
+        $info = CategoryModel::deleteCategory($category_id);
+        if ($info) {
+            return back();
+        }
+
+        return back()->withErrors("Gagal menghapus kategori");
+    }
+
     function createCategoryHandler(Request $request)
     {
         $validator = Validator::make($request->all(), [
