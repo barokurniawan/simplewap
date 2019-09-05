@@ -25,23 +25,13 @@ CREATE TABLE IF NOT EXISTS `articles` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Dumping data for table db_simplewap.articles: ~11 rows (approximately)
+-- Dumping data for table db_simplewap.articles: ~1 rows (approximately)
 DELETE FROM `articles`;
 /*!40000 ALTER TABLE `articles` DISABLE KEYS */;
 INSERT INTO `articles` (`id`, `slug`, `category_id`, `title`, `created_at`, `updated_at`, `description`, `read_count`) VALUES
-	(2, 'lorem-ipsum-dolor-sit-amet', 1, 'Lorem ipsum dolor sit amet', '2019-09-01 16:35:55', '2019-09-01 12:03:45', 'Cras eu rutrum dolor. In hac habitasse platea dictumst. Donec volutpat, libero hendrerit mattis ullamcorper, leo sapien auctor nunc, et porttitor risus libero quis lectus. Fusce viverra nunc vulputate, maximus nunc ac, consequat arcu. Vestibulum sollicitudin, quam quis dapibus aliquet, metus lorem vestibulum eros, a cursus neque erat sed turpis. Donec iaculis, nulla interdum sollicitudin suscipit, turpis augue vestibulum urna, maximus efficitur lorem ex accumsan est. Pellentesque eget sapien eget eros eleifend fringilla. Phasellus consequat diam quis ex hendrerit, ut pulvinar lacus euismod. Phasellus a volutpat nisi. Integer eget feugiat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum eros non risus hendrerit, fermentum ultricies ligula aliquet. Suspendisse eu scelerisque risus, et bibendum mauris.', 1),
-	(3, 'lorem-ipsum-dolor-sit-amet-3', 2, 'Lorem ipsum dolor sit amet', '2019-09-01 16:35:55', '2019-09-01 12:03:45', 'Cras eu rutrum dolor. In hac habitasse platea dictumst. Donec volutpat, libero hendrerit mattis ullamcorper, leo sapien auctor nunc, et porttitor risus libero quis lectus. Fusce viverra nunc vulputate, maximus nunc ac, consequat arcu. Vestibulum sollicitudin, quam quis dapibus aliquet, metus lorem vestibulum eros, a cursus neque erat sed turpis. Donec iaculis, nulla interdum sollicitudin suscipit, turpis augue vestibulum urna, maximus efficitur lorem ex accumsan est. Pellentesque eget sapien eget eros eleifend fringilla. Phasellus consequat diam quis ex hendrerit, ut pulvinar lacus euismod. Phasellus a volutpat nisi. Integer eget feugiat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum eros non risus hendrerit, fermentum ultricies ligula aliquet. Suspendisse eu scelerisque risus, et bibendum mauris.', 1),
-	(5, 'lorem-ipsum-dolor-sit-amet-4', 2, 'Lorem ipsum dolor sit amet', '2019-09-01 16:35:55', '2019-09-01 12:03:45', 'Cras eu rutrum dolor. In hac habitasse platea dictumst. Donec volutpat, libero hendrerit mattis ullamcorper, leo sapien auctor nunc, et porttitor risus libero quis lectus. Fusce viverra nunc vulputate, maximus nunc ac, consequat arcu. Vestibulum sollicitudin, quam quis dapibus aliquet, metus lorem vestibulum eros, a cursus neque erat sed turpis. Donec iaculis, nulla interdum sollicitudin suscipit, turpis augue vestibulum urna, maximus efficitur lorem ex accumsan est. Pellentesque eget sapien eget eros eleifend fringilla. Phasellus consequat diam quis ex hendrerit, ut pulvinar lacus euismod. Phasellus a volutpat nisi. Integer eget feugiat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum eros non risus hendrerit, fermentum ultricies ligula aliquet. Suspendisse eu scelerisque risus, et bibendum mauris.', 1),
-	(6, 'lorem-ipsum-dolor-sit-amet-5', 2, 'Lorem ipsum dolor sit amet', '2019-09-01 16:35:55', '2019-09-01 12:03:45', 'Cras eu rutrum dolor. In hac habitasse platea dictumst. Donec volutpat, libero hendrerit mattis ullamcorper, leo sapien auctor nunc, et porttitor risus libero quis lectus. Fusce viverra nunc vulputate, maximus nunc ac, consequat arcu. Vestibulum sollicitudin, quam quis dapibus aliquet, metus lorem vestibulum eros, a cursus neque erat sed turpis. Donec iaculis, nulla interdum sollicitudin suscipit, turpis augue vestibulum urna, maximus efficitur lorem ex accumsan est. Pellentesque eget sapien eget eros eleifend fringilla. Phasellus consequat diam quis ex hendrerit, ut pulvinar lacus euismod. Phasellus a volutpat nisi. Integer eget feugiat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum eros non risus hendrerit, fermentum ultricies ligula aliquet. Suspendisse eu scelerisque risus, et bibendum mauris.', 1),
-	(7, 'lorem-ipsum-dolor-sit-amet-6', 2, 'Lorem ipsum dolor sit amet', '2019-09-01 16:35:55', '2019-09-01 12:03:45', 'Cras eu rutrum dolor. In hac habitasse platea dictumst. Donec volutpat, libero hendrerit mattis ullamcorper, leo sapien auctor nunc, et porttitor risus libero quis lectus. Fusce viverra nunc vulputate, maximus nunc ac, consequat arcu. Vestibulum sollicitudin, quam quis dapibus aliquet, metus lorem vestibulum eros, a cursus neque erat sed turpis. Donec iaculis, nulla interdum sollicitudin suscipit, turpis augue vestibulum urna, maximus efficitur lorem ex accumsan est. Pellentesque eget sapien eget eros eleifend fringilla. Phasellus consequat diam quis ex hendrerit, ut pulvinar lacus euismod. Phasellus a volutpat nisi. Integer eget feugiat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum eros non risus hendrerit, fermentum ultricies ligula aliquet. Suspendisse eu scelerisque risus, et bibendum mauris.', 1),
-	(8, 'lorem-ipsum-dolor-sit-amet-7', 2, 'Lorem ipsum dolor sit amet', '2019-09-01 16:35:55', '2019-09-01 12:03:45', 'Cras eu rutrum dolor. In hac habitasse platea dictumst. Donec volutpat, libero hendrerit mattis ullamcorper, leo sapien auctor nunc, et porttitor risus libero quis lectus. Fusce viverra nunc vulputate, maximus nunc ac, consequat arcu. Vestibulum sollicitudin, quam quis dapibus aliquet, metus lorem vestibulum eros, a cursus neque erat sed turpis. Donec iaculis, nulla interdum sollicitudin suscipit, turpis augue vestibulum urna, maximus efficitur lorem ex accumsan est. Pellentesque eget sapien eget eros eleifend fringilla. Phasellus consequat diam quis ex hendrerit, ut pulvinar lacus euismod. Phasellus a volutpat nisi. Integer eget feugiat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum eros non risus hendrerit, fermentum ultricies ligula aliquet. Suspendisse eu scelerisque risus, et bibendum mauris.', 1),
-	(9, 'lorem-ipsum-dolor-sit-amet-8', 2, 'Lorem ipsum dolor sit amet', '2019-09-01 16:35:55', '2019-09-01 12:03:45', 'Cras eu rutrum dolor. In hac habitasse platea dictumst. Donec volutpat, libero hendrerit mattis ullamcorper, leo sapien auctor nunc, et porttitor risus libero quis lectus. Fusce viverra nunc vulputate, maximus nunc ac, consequat arcu. Vestibulum sollicitudin, quam quis dapibus aliquet, metus lorem vestibulum eros, a cursus neque erat sed turpis. Donec iaculis, nulla interdum sollicitudin suscipit, turpis augue vestibulum urna, maximus efficitur lorem ex accumsan est. Pellentesque eget sapien eget eros eleifend fringilla. Phasellus consequat diam quis ex hendrerit, ut pulvinar lacus euismod. Phasellus a volutpat nisi. Integer eget feugiat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum eros non risus hendrerit, fermentum ultricies ligula aliquet. Suspendisse eu scelerisque risus, et bibendum mauris.', 1),
-	(10, 'lorem-ipsum-dolor-sit-amet-9', 2, 'Lorem ipsum dolor sit amet', '2019-09-01 16:35:55', '2019-09-01 12:03:45', 'Cras eu rutrum dolor. In hac habitasse platea dictumst. Donec volutpat, libero hendrerit mattis ullamcorper, leo sapien auctor nunc, et porttitor risus libero quis lectus. Fusce viverra nunc vulputate, maximus nunc ac, consequat arcu. Vestibulum sollicitudin, quam quis dapibus aliquet, metus lorem vestibulum eros, a cursus neque erat sed turpis. Donec iaculis, nulla interdum sollicitudin suscipit, turpis augue vestibulum urna, maximus efficitur lorem ex accumsan est. Pellentesque eget sapien eget eros eleifend fringilla. Phasellus consequat diam quis ex hendrerit, ut pulvinar lacus euismod. Phasellus a volutpat nisi. Integer eget feugiat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum eros non risus hendrerit, fermentum ultricies ligula aliquet. Suspendisse eu scelerisque risus, et bibendum mauris.', 1),
-	(11, 'lorem-ipsum-dolor-sit-amet-10', 2, 'Lorem ipsum dolor sit amet', '2019-09-01 16:35:55', '2019-09-01 12:03:45', 'Cras eu rutrum dolor. In hac habitasse platea dictumst. Donec volutpat, libero hendrerit mattis ullamcorper, leo sapien auctor nunc, et porttitor risus libero quis lectus. Fusce viverra nunc vulputate, maximus nunc ac, consequat arcu. Vestibulum sollicitudin, quam quis dapibus aliquet, metus lorem vestibulum eros, a cursus neque erat sed turpis. Donec iaculis, nulla interdum sollicitudin suscipit, turpis augue vestibulum urna, maximus efficitur lorem ex accumsan est. Pellentesque eget sapien eget eros eleifend fringilla. Phasellus consequat diam quis ex hendrerit, ut pulvinar lacus euismod. Phasellus a volutpat nisi. Integer eget feugiat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum eros non risus hendrerit, fermentum ultricies ligula aliquet. Suspendisse eu scelerisque risus, et bibendum mauris.', 1),
-	(12, 'lorem-ipsum-dolor-sit-amet-11', 2, 'Lorem ipsum dolor sit amet', '2019-09-01 16:35:55', '2019-09-01 12:03:45', 'Cras eu rutrum dolor. In hac habitasse platea dictumst. Donec volutpat, libero hendrerit mattis ullamcorper, leo sapien auctor nunc, et porttitor risus libero quis lectus. Fusce viverra nunc vulputate, maximus nunc ac, consequat arcu. Vestibulum sollicitudin, quam quis dapibus aliquet, metus lorem vestibulum eros, a cursus neque erat sed turpis. Donec iaculis, nulla interdum sollicitudin suscipit, turpis augue vestibulum urna, maximus efficitur lorem ex accumsan est. Pellentesque eget sapien eget eros eleifend fringilla. Phasellus consequat diam quis ex hendrerit, ut pulvinar lacus euismod. Phasellus a volutpat nisi. Integer eget feugiat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum eros non risus hendrerit, fermentum ultricies ligula aliquet. Suspendisse eu scelerisque risus, et bibendum mauris.', 1),
-	(13, 'lorem-ipsum-dolor-sit-amet-12', 2, 'Lorem ipsum dolor sit amet', '2019-09-01 20:35:55', '2019-09-01 12:03:45', 'Cras eu rutrum dolor. In hac habitasse platea dictumst. Donec volutpat, libero hendrerit mattis ullamcorper, leo sapien auctor nunc, et porttitor risus libero quis lectus. Fusce viverra nunc vulputate, maximus nunc ac, consequat arcu. Vestibulum sollicitudin, quam quis dapibus aliquet, metus lorem vestibulum eros, a cursus neque erat sed turpis. Donec iaculis, nulla interdum sollicitudin suscipit, turpis augue vestibulum urna, maximus efficitur lorem ex accumsan est. Pellentesque eget sapien eget eros eleifend fringilla. Phasellus consequat diam quis ex hendrerit, ut pulvinar lacus euismod. Phasellus a volutpat nisi. Integer eget feugiat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum eros non risus hendrerit, fermentum ultricies ligula aliquet. Suspendisse eu scelerisque risus, et bibendum mauris.', 1);
+	(17, 'qwe', 13, 'qwe', '2019-09-05 20:00:25', '2019-09-05 20:00:26', 'qwe', 1);
 /*!40000 ALTER TABLE `articles` ENABLE KEYS */;
 
 -- Dumping structure for table db_simplewap.article_category
@@ -53,23 +43,11 @@ CREATE TABLE IF NOT EXISTS `article_category` (
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Dumping data for table db_simplewap.article_category: ~11 rows (approximately)
+-- Dumping data for table db_simplewap.article_category: ~0 rows (approximately)
 DELETE FROM `article_category`;
 /*!40000 ALTER TABLE `article_category` DISABLE KEYS */;
-INSERT INTO `article_category` (`category_id`, `category_name`, `category_slug`, `created_at`, `updated_at`) VALUES
-	(1, 'General', 'general', '0000-00-00', '0000-00-00'),
-	(2, 'Programming', 'programming', '0000-00-00', '0000-00-00'),
-	(3, 'Database', 'database', '2019-09-04', '2019-09-04'),
-	(4, 'Java', 'java', '2019-09-04', '2019-09-04'),
-	(5, 'kesehatan', 'kesehatan', '2019-09-04', '2019-09-04'),
-	(6, 'Gaya Hidup', 'gaya-hidup', '2019-09-04', '2019-09-04'),
-	(7, 'Sport', 'sport', '2019-09-04', '2019-09-04'),
-	(8, 'Mancanegara', 'mancanegara', '2019-09-04', '2019-09-04'),
-	(9, 'seputar bola', 'seputar-bola', '2019-09-04', '2019-09-04'),
-	(10, 'Fakta Menarik', 'fakta-menarik', '2019-09-04', '2019-09-04'),
-	(11, 'Kabar Dunia', 'kabar-dunia', '2019-09-04', '2019-09-04');
 /*!40000 ALTER TABLE `article_category` ENABLE KEYS */;
 
 -- Dumping structure for table db_simplewap.article_comments
@@ -87,13 +65,9 @@ CREATE TABLE IF NOT EXISTS `article_comments` (
   CONSTRAINT `FK_article_comments_articles` FOREIGN KEY (`article_id`) REFERENCES `articles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Dumping data for table db_simplewap.article_comments: ~3 rows (approximately)
+-- Dumping data for table db_simplewap.article_comments: ~0 rows (approximately)
 DELETE FROM `article_comments`;
 /*!40000 ALTER TABLE `article_comments` DISABLE KEYS */;
-INSERT INTO `article_comments` (`id`, `article_id`, `name`, `url`, `comment`, `created_at`, `updated_at`) VALUES
-	(7, 2, 'Asep Kurniawan', '', 'Ini hanya contoh komentar saja gan. :)', '2019-09-01', '2019-09-01'),
-	(8, 2, 'Asep Kurniawan', '', 'test lagi ah', '2019-09-01', '2019-09-01'),
-	(9, 13, 'Asep Kurniawan', '', 'hanya mencoba pesan sajah', '2019-09-01', '2019-09-01');
 /*!40000 ALTER TABLE `article_comments` ENABLE KEYS */;
 
 -- Dumping structure for table db_simplewap.banned
@@ -354,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Asep Kurniawan', 'asep.kurniawan@indocyber.co.id', NULL, '$2y$10$5TyBa5kKSeq14W.4WYh4TOvSsZF6jjlHrknJ/yfivfuWz2nkAakOm', 'dWdu3j9DwuoaueEmYyEPmqvVcW7clRH3aorFqOpm0VoaUkxL8dTAOsrdEsfz', '2019-09-01 08:51:19', '2019-09-01 08:51:19');
+	(1, 'Asep Kurniawan', 'asep.kurniawan@indocyber.co.id', NULL, '$2y$10$5TyBa5kKSeq14W.4WYh4TOvSsZF6jjlHrknJ/yfivfuWz2nkAakOm', 'WPMaH8A9rRfuNSAUauo54A4LaJDnojMPQLOkEmOvH7ViYEctbamSAI7cFYEc', '2019-09-01 08:51:19', '2019-09-01 08:51:19');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for table db_simplewap.votes
