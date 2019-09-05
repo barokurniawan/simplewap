@@ -6,6 +6,7 @@ use App\MenuModel;
 use App\CategoryModel;
 use App\Entity\QueryFilter;
 use Illuminate\Http\Request;
+use App\Kurniawan\Entity\Menu;
 use App\Kurniawan\Entity\Category;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
@@ -34,6 +35,48 @@ class PanelController extends Controller
         ];
 
         return View::make("dashboard.master-category", $items);
+    }
+
+    function masterMenuHandler(Request $request)
+    {
+        $filter = new QueryFilter();
+        $filter->setLimit(10);
+
+        $items = [
+            "page_title" => "Master Menu",
+            "list_menu" => MenuModel::advanceShowList($filter)
+        ];
+
+        return View::make("dashboard.master-menu", $items);
+    }
+
+    function createMenuHandler(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'type'      =>  'required',
+            'name'      =>  'required',
+            'url'       =>  'required',
+            'position'  =>  'required',
+        ]);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
+
+        $model = new MenuModel;
+        $info = $model->createMenu(new Menu(
+            null,
+            $request->input('type'),
+            $request->input("name"),
+            $request->input("url"),
+            $request->input("position")
+        ));
+
+        if ($info) {
+            return Redirect::back()->with("resultInfo", "Menu baru berhasil ditambahkan");
+        }
+
+        return Redirect::back()->withErrors("Gagal menambahkan menu");
     }
 
     function deleteCategoryHandler($category_id)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MenuModel;
 use App\ShoutboxModel;
 use App\Entity\QueryFilter;
 use Jenssegers\Agent\Agent;
@@ -51,6 +52,7 @@ class ShoutboxController extends Controller
         $items = [
             "page_title" => "Shoutbox page",
             "uaParser" => new Agent(),
+            "bottom_list" => MenuModel::showList(),
             "list_shout" => ShoutboxModel::advanceShowList($filter)
         ];
 

@@ -28,14 +28,14 @@
                     @endguest
                 </td>
                 <td style=" width:50%">
-                    Situs :<br /><input autocomplete="off" type="text" name="url" style="width:90%"
-                        placeholder="http://">
+                    Situs :<br />
+                    <input autocomplete="off" type="text" name="url" style="width:90%" placeholder="http://">
                 </td>
             </tr>
             <tr>
                 <td style="width:50%">
-                    Pesan :<br /><input autocomplete="off" type="text" name="text" style="width:90%"
-                        placeholder="pesan">
+                    Pesan :<br />
+                    <input autocomplete="off" type="text" name="text" style="width:90%" placeholder="pesan">
                 </td>
                 <td style=" width:50%">
                     Kelamin :<br />

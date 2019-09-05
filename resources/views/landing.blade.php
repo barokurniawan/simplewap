@@ -5,7 +5,18 @@
     <meta charset="utf-8">
     <base href="{{ url("/") }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ sprintf("%s - %s", (isset($page_title) ? $page_title : "Undefined"), env("APP_NAME")) }}</title>
+
+    @if (Request::segment(1) == "login")
+    @php
+    $alt_title = "Login"
+    @endphp
+    @else
+    @php
+    $alt_title = "Undefined"
+    @endphp
+    @endif
+
+    <title>{{ sprintf("%s - %s", (isset($page_title) ? $page_title : $alt_title), env("APP_NAME")) }}</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <meta name="keywords" content="" />
     <meta name="description" content="" />

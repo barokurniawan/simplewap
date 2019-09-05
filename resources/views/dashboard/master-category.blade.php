@@ -17,8 +17,8 @@
                     <input autocomplete="off" type="text" name="category_name" style="width:90%" required>
                 </td>
                 <td style=" width:50%">
-                    Slug :<br><input autocomplete="off" autocomplete="off" type="text" name="category_slug"
-                        style="width:90%" required>
+                    Slug :<br>
+                    <input autocomplete="off" type="text" name="category_slug" style="width:90%" required>
                 </td>
             </tr>
             <tr>

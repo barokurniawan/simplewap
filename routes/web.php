@@ -36,6 +36,9 @@ Route::middleware("auth")->group(function () {
     Route::post("dashboard/master-category/update", "PanelController@actionUpdateCategoryHandler");
     Route::get("dashboard/master-category/delete/{category_id}", "PanelController@deleteCategoryHandler");
     Route::get("dashboard/master-category/update/{category_id}", "PanelController@updateCategoryHandler");
+
+    Route::get("dashboard/master-menu", "PanelController@masterMenuHandler")->name("master_menu");
+    Route::post("dashboard/master-menu/create", "PanelController@createMenuHandler");
 });
 
 Route::get('/logout', function () {
