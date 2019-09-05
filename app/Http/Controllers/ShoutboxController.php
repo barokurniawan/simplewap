@@ -37,8 +37,9 @@ class ShoutboxController extends Controller
             $req->getClientIp()
         );
 
-        $info = ShoutboxModel::add($item);
-        $message = ($info) ? "Saved!" : "Failed";
+        $model = new ShoutboxModel;
+        $info = $model->add($item);
+        $message = ($info) ? "Saved!" : $model->getErrorMessage();
         return Redirect::route($redirectTo)->with('responseInfo', $message);
     }
 

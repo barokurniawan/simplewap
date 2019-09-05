@@ -8,6 +8,12 @@
 </div>
 @endif
 
+@if (session('responseInfo'))
+<div class="status">
+    {{ session('responseInfo') }}
+</div>
+@endif
+
 <form action="action/new-shout?redirect=shoutbox" method="post">
     {{ csrf_field() }}
     <div class="menu">
