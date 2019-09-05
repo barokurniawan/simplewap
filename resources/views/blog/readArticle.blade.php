@@ -22,8 +22,15 @@
 </div>
 
 <div class="menu">
-    Kategori: <a href="{{ sprintf(\App\BlogModel::URI_ARTICLE_BY_CATEGORY, $article->category->category_slug) }}"
+    Kategori:
+
+    @if (is_null($article->category))
+    <span>{{ \App\CategoryModel::DEFAULT_CATEGORY_NAME }}</span>
+    @else
+    <a href="{{ sprintf(\App\BlogModel::URI_ARTICLE_BY_CATEGORY, $article->category->category_slug) }}"
         title="Umum">{{ $article->category->category_name }}</a>
+    @endif
+
     <span style="float: right">{{ date_format(new Datetime($article->created_at), "d/m/Y H:i") }}</span>
     <div class="line"></div>
     {!! $article->description !!}

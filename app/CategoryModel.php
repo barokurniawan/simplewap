@@ -15,6 +15,7 @@ class CategoryModel extends Model
     const SHOWLIST_CACHE_KEY = "article:category";
     const LINK_DELETE = "dashboard/master-category/delete/%s";
     const LINK_UPDATE = "dashboard/master-category/update/%s";
+    const DEFAULT_CATEGORY_NAME = "Uncategorized";
 
     public function articles()
     {
