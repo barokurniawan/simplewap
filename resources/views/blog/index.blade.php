@@ -53,13 +53,15 @@
     <img src="images/rss.png" alt="&raquo;" /> <a href="blog/rss.xml">RSS-Feed</a><br />
 </div>
 
-@foreach ($categories as $item)
+@forelse ($categories as $item)
 <div class="menu">
     <img src="images/line.png" alt="&raquo;" />
     <a href="{{ sprintf(\App\BlogModel::URI_ARTICLE_BY_CATEGORY, $item->category_slug) }}"
         title="{{ $item->category_name }}">{{ $item->category_name }}</a>
     ({{ count($item->articles) }})<br />
 </div>
-@endforeach
+@empty
+<div class="menu">Tidak ada kategori</div>
+@endforelse
 
 @endsection

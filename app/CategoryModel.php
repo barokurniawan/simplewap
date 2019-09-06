@@ -93,6 +93,10 @@ class CategoryModel extends Model
     public static function deleteCategory($category_id)
     {
         $item = CategoryModel::find($category_id);
+        if (empty($item)) {
+            return false;
+        }
+
         return $item->delete();
     }
 
