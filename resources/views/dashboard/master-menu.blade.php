@@ -7,6 +7,13 @@
     &bull; {{ $errors->first() }}
 </div>
 @endif
+
+@if (session('responseInfo'))
+<div class="status">
+    {{ session('responseInfo') }}
+</div>
+@endif
+
 <div class="title"><b>Master Menu </b></div>
 <form action="dashboard/master-menu/create" method="post" class="menu">
     <table class="post">

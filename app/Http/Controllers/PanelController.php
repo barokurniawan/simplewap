@@ -50,6 +50,17 @@ class PanelController extends Controller
         return View::make("dashboard.master-menu", $items);
     }
 
+    function deleteMenuHandler($menu_id)
+    {
+        $model = new MenuModel;
+        if ($model->deleteMenu($menu_id)) {
+            return Redirect::back()->with("Menu dudah dihapus");
+        }
+
+        $message = $model->getErrorMessage() ? $model->getErrorMessage() : "Tidak bisa menghapus menu";
+        return Redirect::back()->withErrors($message);
+    }
+
     function createMenuHandler(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -63,7 +74,7 @@ class PanelController extends Controller
             return Redirect::back()->withErrors($validator);
         }
 
-        $model = new MenuModel;
+        $model = new MenuModel();
         $info = $model->createMenu(new Menu(
             null,
             $request->input('type'),
@@ -99,6 +110,48 @@ class PanelController extends Controller
         return View::make("dashboard.edit-master-category", [
             "category" => $category
         ]);
+    }
+
+    function updateMenuHandler($menu_id)
+    {
+        $menu_item = MenuModel::getMenuByID($menu_id);
+        if (empty($menu_item)) {
+            return Redirect::back()->withErrors("Menu tidak ditemukan");
+        }
+
+        return View::make("dashboard.edit-master-menu", [
+            "menu_item" => $menu_item,
+            "page_title" => "Edit Menu"
+        ]);
+    }
+
+    function actionUpdateMenuHandler(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name'      => 'required',
+            'url'       => 'required',
+            'type'      => 'required',
+            'position'  => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
+
+        $model = new MenuModel();
+        $info = $model->updateMenu($request->input("id"), new Menu(
+            $request->input("id"),
+            $request->input("type"),
+            $request->input("name"),
+            $request->input("url"),
+            $request->input("position")
+        ));
+
+        if ($info) {
+            return Redirect::route("master_menu")->with("responseInfo", "Menu sudah diupdate");
+        }
+
+        return Redirect::back()->withErrors("Update menu gagal");
     }
 
     function actionUpdateCategoryHandler(Request $request)

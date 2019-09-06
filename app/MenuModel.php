@@ -5,6 +5,7 @@ namespace App;
 use App\Kurniawan\Cache;
 use App\Kurniawan\Entity\Menu;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Redirect;
 
 class MenuModel extends Model
 {
@@ -37,6 +38,39 @@ class MenuModel extends Model
         $menu->icon = $item->getIcon();
 
         return $menu->save();
+    }
+
+    function updateMenu($menu_id, Menu $item)
+    {
+        $model = MenuModel::find($menu_id);
+        if (empty($model)) {
+            $this->setErrorMessage("Menu tidak ditemukan");
+            return false;
+        }
+
+        $model->name = $item->getName();
+        $model->url = $item->getUrl();
+        $model->type = $item->getType();
+        $model->position = $item->getPosition();
+
+        return $model->save();
+    }
+
+    static function getMenuByID($menu_id)
+    {
+        $menu = MenuModel::find($menu_id);
+        return $menu;
+    }
+
+    function deleteMenu($menu_id)
+    {
+        $menu = MenuModel::find($menu_id);
+        if (empty($menu)) {
+            $this->setErrorMessage("Menu tidak ditemukan");
+            return false;
+        }
+
+        return $menu->delete();
     }
 
     static function showList()
