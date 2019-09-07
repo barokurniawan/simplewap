@@ -8,6 +8,14 @@
 </div>
 @endif
 
+
+@if (session('responseInfo'))
+<div class="status">
+    {{ session('responseInfo') }}
+</div>
+@endif
+
+
 <div class="title"><b>Tulis Artikel </b></div>
 <form action="article/create" method="post" class="menu">
     <table class="post">
