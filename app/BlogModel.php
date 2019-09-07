@@ -10,10 +10,35 @@ class BlogModel extends Model
     protected $table = 'articles';
     protected $primaryKey = 'id';
     public $incrementing = true;
+    public $errorMessage;
 
     // blog/read/(article slug).html
     const URI_SINGLE_ARTICLE = "blog/read/%s.html";
     const URI_ARTICLE_BY_CATEGORY = "category/%s.html";
+    const LINK_UPDATE = "dashboard/article/update/%s";
+    const LINK_DELETE = "dashboard/article/delete/%s";
+
+    /**
+     * Getter for ErrorMessage
+     *
+     * @return [type]
+     */
+    public function getErrorMessage()
+    {
+        return $this->errorMessage;
+    }
+
+    /**
+     * Setter for ErrorMessage
+     * @var [type] errorMessage
+     *
+     * @return self
+     */
+    public function setErrorMessage($errorMessage)
+    {
+        $this->errorMessage = $errorMessage;
+        return $this;
+    }
 
     public function category()
     {
@@ -30,6 +55,7 @@ class BlogModel extends Model
         $blogModel = new BlogModel;
         $blogModel->title = $blog->getTitle();
         $blogModel->slug = $blog->getSlug();
+        $blogModel->category_id = $blog->getCategoryId();
         $blogModel->description = $blog->getDescription();
         $blogModel->read_count = $blog->getReadCount();
         return $blogModel->save();
@@ -63,6 +89,17 @@ class BlogModel extends Model
 
         $output = $bm->orderBy("created_at", "desc")->orderBy("id", "desc")->simplePaginate($filter->getLimit());
         return $output;
+    }
+
+    public function deleteArticle($article_id)
+    {
+        $model = BlogModel::find($article_id);
+        if (empty($model)) {
+            $this->setErrorMessage("Gagal menghapus artikel");
+            return false;
+        }
+
+        return $model->delete();
     }
 
     public static function getNewArticle()

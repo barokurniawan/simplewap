@@ -23,6 +23,7 @@
     <meta name="copyright" content="(c) simplewap.net 2012" />
     <meta name="author" content="{{ env('APP_AUTHOR') }}" />
     <meta name="email" content="{{ env('APP_AUTHOR') }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="Charset" content="UTF-8" />
     <meta name="Distribution" content="Global" />
     <meta name="Robots" content="INDEX,FOLLOW" />
@@ -31,6 +32,9 @@
     <link rel="stylesheet" type="text/css" href="data/themes/default/style.css" />
     <link rel="alternate" type="application/rss+xml" title="RSS-News" href="news/rss.xml" />
     <link rel="alternate" type="application/rss+xml" title="RSS-News" href="blog/rss.xml" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.2.46/jodit.min.css">
+    <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.2.46/jodit.min.js"></script>
 </head>
 
 <body>

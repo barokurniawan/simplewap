@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\BlogModel;
 use App\MenuModel;
 use App\CategoryModel;
 use App\Entity\QueryFilter;
 use Illuminate\Http\Request;
+use App\Kurniawan\Entity\Blog;
 use App\Kurniawan\Entity\Menu;
 use App\Kurniawan\Entity\Category;
 use Illuminate\Support\Facades\View;
@@ -203,5 +205,29 @@ class PanelController extends Controller
         }
 
         return Redirect::back()->withErrors("Tidak bisa menambahkan kategori");
+    }
+
+    function masterArticleHandler(Request $request)
+    {
+        $filter = new QueryFilter();
+        $filter->setLimit(10);
+
+        $items = [
+            "page_title" => "Master Artikel",
+            "list_article" => BlogModel::advanceShowList($filter)
+        ];
+
+        return View::make("dashboard.master-article", $items);
+    }
+
+    function deleteArticleHandler($article_id)
+    {
+        $model = new BlogModel();
+        $info = $model->deleteArticle($article_id);
+        if ($info) {
+            return Redirect::back()->with("Artikel sudah dihapus");
+        }
+
+        return Redirect::back()->withErrors("Gagal menghapus artikel.");
     }
 }

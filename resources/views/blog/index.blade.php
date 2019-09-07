@@ -29,7 +29,7 @@
     <br />
     <span>{{ date_format(new Datetime($item->created_at), "d/m/Y H:i") }}</span>
     <div class="line"></div>
-    {{ strip_tags(substr($item->description, 250)) }} ...
+    {{ strip_tags(substr($item->description, 0, 250)) }} ...
     <br />
     <br />
     [Dibaca: <span>{{ $item->read_count }}</span>]

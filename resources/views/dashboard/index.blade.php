@@ -16,10 +16,7 @@
     <a href="dashboard/master-category">Data Kategori</a>
 </div>
 <div class="menu">
-    <a href="article/">Data Artikel</a>
-</div>
-<div class="menu">
-    <a href="article/create">Artikel</a>
+    <a href="dashboard/article/">Data Artikel</a>
 </div>
 <div class="menu">
     <a href="dashboard/setting">Pengaturan</a>

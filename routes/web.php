@@ -42,6 +42,14 @@ Route::middleware("auth")->group(function () {
     Route::get("dashboard/master-menu/delete/{menu_id}", "PanelController@deleteMenuHandler");
     Route::get("dashboard/master-menu/update/{menu_id}", "PanelController@updateMenuHandler");
     Route::post("dashboard/master-menu/update", "PanelController@actionUpdateMenuHandler");
+
+    Route::get("dashboard/article", "PanelController@masterArticleHandler")->name("master_article");
+    Route::get("dashboard/article/delete/{article_id}", "PanelController@deleteArticleHandler");
+
+    Route::get("article/composer", "ArticleController@composerHandler")->name("composer_article");
+    Route::post("article/create", "ArticleController@actionCreateArticleHandler");
+
+    Route::post("jodit/uploader", "JoditController@uploaderHandler");
 });
 
 Route::get('/logout', function () {

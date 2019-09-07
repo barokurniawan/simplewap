@@ -5,8 +5,16 @@ namespace App\Kurniawan\Entity;
 class Blog
 {
     var $id, $slug, $title, $create_at, $update_at, $description, $read_count, $category_id;
-    function __construct($id = null, $slug = null, $title = null, $create_at = null, $update_at = null, $description = null, $read_count = null, $category_id = null)
-    {
+    function __construct(
+        $id = null,
+        $slug = null,
+        $title = null,
+        $category_id = null,
+        $description = null,
+        $read_count = null,
+        $create_at = null,
+        $update_at = null
+    ) {
         $this->setId($id);
         $this->setSlug($slug);
         $this->setTitle($title);
