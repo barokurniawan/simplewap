@@ -83,7 +83,7 @@ class CategoryModel extends Model
                 array_push($arrayData, $arr);
             }
 
-            Cache::put(CategoryModel::SHOWLIST_CACHE_KEY, json_encode($arrayData), Cache::ONE_HOUR);
+            Cache::put(CategoryModel::SHOWLIST_CACHE_KEY, json_encode($arrayData), Cache::FIVE_MINUTE);
             return $items;
         }
 
