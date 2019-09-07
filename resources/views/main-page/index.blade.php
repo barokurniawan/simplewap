@@ -118,7 +118,7 @@
         <span style="float: right">{{ date_format(new Datetime($new_article->created_at), "d/m/Y H:i") }}</span>
 
         <div class="line"></div>
-        {{ strip_tags(substr($new_article->description, 250)) }} ...
+        {{ substr(strip_tags($new_article->description), 0, 250) }} ...
         <br>
         <br>
         [Dibaca: <span>{{ $new_article->read_count }}</span>]
