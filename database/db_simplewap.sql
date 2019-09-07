@@ -25,11 +25,15 @@ CREATE TABLE IF NOT EXISTS `articles` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Dumping data for table db_simplewap.articles: ~0 rows (approximately)
-DELETE FROM `articles`;
 /*!40000 ALTER TABLE `articles` DISABLE KEYS */;
+INSERT INTO `articles` (`id`, `slug`, `category_id`, `title`, `created_at`, `updated_at`, `description`, `read_count`) VALUES
+	(2, 'test-test', 1, 'test test', '2019-09-07 04:39:41', '2019-09-07 04:39:41', 'test test test', 0),
+	(3, 'resr-resr', 2, 'resr resr', '2019-09-07 04:40:54', '2019-09-07 04:40:54', 'sadasdsad a dsadsadd adsd', 0),
+	(4, 'test', 3, 'test', '2019-09-07 05:04:00', '2019-09-07 05:04:00', 'tset', 0),
+	(5, 'jajajaj', 4, 'jajajaj', '2019-09-07 05:05:10', '2019-09-07 05:05:10', 'Jahahahah', 0);
 /*!40000 ALTER TABLE `articles` ENABLE KEYS */;
 
 -- Dumping structure for table db_simplewap.article_category
@@ -41,11 +45,16 @@ CREATE TABLE IF NOT EXISTS `article_category` (
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Dumping data for table db_simplewap.article_category: ~0 rows (approximately)
-DELETE FROM `article_category`;
+-- Dumping data for table db_simplewap.article_category: ~4 rows (approximately)
 /*!40000 ALTER TABLE `article_category` DISABLE KEYS */;
+INSERT INTO `article_category` (`category_id`, `category_name`, `category_slug`, `created_at`, `updated_at`) VALUES
+	(1, 'Programming', 'programming', '2019-09-07', '2019-09-07'),
+	(2, 'General', 'general', '2019-09-07', '2019-09-07'),
+	(3, 'PHP', 'php', '2019-09-07', '2019-09-07'),
+	(4, 'Java', 'java', '2019-09-07', '2019-09-07'),
+	(5, 'Golang', 'golang', '2019-09-07', '2019-09-07');
 /*!40000 ALTER TABLE `article_category` ENABLE KEYS */;
 
 -- Dumping structure for table db_simplewap.article_comments
@@ -64,7 +73,6 @@ CREATE TABLE IF NOT EXISTS `article_comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Dumping data for table db_simplewap.article_comments: ~0 rows (approximately)
-DELETE FROM `article_comments`;
 /*!40000 ALTER TABLE `article_comments` DISABLE KEYS */;
 /*!40000 ALTER TABLE `article_comments` ENABLE KEYS */;
 
@@ -82,7 +90,6 @@ CREATE TABLE IF NOT EXISTS `blog_file` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Dumping data for table db_simplewap.blog_file: ~0 rows (approximately)
-DELETE FROM `blog_file`;
 /*!40000 ALTER TABLE `blog_file` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blog_file` ENABLE KEYS */;
 
@@ -109,7 +116,6 @@ CREATE TABLE IF NOT EXISTS `loads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Dumping data for table db_simplewap.loads: ~0 rows (approximately)
-DELETE FROM `loads`;
 /*!40000 ALTER TABLE `loads` DISABLE KEYS */;
 /*!40000 ALTER TABLE `loads` ENABLE KEYS */;
 
@@ -120,21 +126,21 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `type` enum('link','text') COLLATE utf8_bin NOT NULL DEFAULT 'link',
   `name` varchar(64) COLLATE utf8_bin NOT NULL,
   `url` varchar(64) COLLATE utf8_bin NOT NULL,
-  `count` varchar(64) COLLATE utf8_bin NOT NULL,
   `position` int(11) NOT NULL,
   `icon` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `position` (`position`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Main Menu';
 
 -- Dumping data for table db_simplewap.menu: ~4 rows (approximately)
-DELETE FROM `menu`;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` (`id`, `type`, `name`, `url`, `count`, `position`, `icon`) VALUES
-	(11, 'text', 'Navigation', '#', '3', 1, '0'),
-	(12, 'link', 'Download', '/loads', '0', 2, '1'),
-	(13, 'link', 'Shoutbox', '/shoutbox', '0', 3, '1'),
-	(14, 'link', 'Blog', '/blog', '0', 4, '1');
+INSERT INTO `menu` (`id`, `type`, `name`, `url`, `position`, `icon`, `created_at`, `updated_at`) VALUES
+	(11, 'text', 'Navigation', '#', 1, '0', NULL, '2019-09-07'),
+	(12, 'link', 'Download', '/loads', 2, '1', NULL, NULL),
+	(13, 'link', 'Shoutbox', '/shoutbox', 3, '1', NULL, NULL),
+	(14, 'link', 'Blog', '/blog', 4, '1', NULL, NULL);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 -- Dumping structure for table db_simplewap.migrations
@@ -147,7 +153,6 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Dumping data for table db_simplewap.migrations: ~0 rows (approximately)
-DELETE FROM `migrations`;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
@@ -161,7 +166,6 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Dumping data for table db_simplewap.password_resets: ~0 rows (approximately)
-DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
@@ -180,7 +184,6 @@ CREATE TABLE IF NOT EXISTS `shout` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Dumping data for table db_simplewap.shout: ~0 rows (approximately)
-DELETE FROM `shout`;
 /*!40000 ALTER TABLE `shout` DISABLE KEYS */;
 /*!40000 ALTER TABLE `shout` ENABLE KEYS */;
 
@@ -199,11 +202,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Dumping data for table db_simplewap.users: ~1 rows (approximately)
-DELETE FROM `users`;
+-- Dumping data for table db_simplewap.users: ~0 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Asep Kurniawan', 'asep.kurniawan@indocyber.co.id', NULL, '$2y$10$5TyBa5kKSeq14W.4WYh4TOvSsZF6jjlHrknJ/yfivfuWz2nkAakOm', 'WPMaH8A9rRfuNSAUauo54A4LaJDnojMPQLOkEmOvH7ViYEctbamSAI7cFYEc', '2019-09-01 08:51:19', '2019-09-01 08:51:19');
+	(1, 'Asep Kurniawan', 'asep.kurniawan@indocyber.co.id', NULL, '$2y$10$5TyBa5kKSeq14W.4WYh4TOvSsZF6jjlHrknJ/yfivfuWz2nkAakOm', 'JhwV5qNMtCGFd5iJds5X3ANtrb8jJ4XqBIWaOGnoT50PkGSUgOc2bArh5gy2', '2019-09-01 08:51:19', '2019-09-01 08:51:19');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
