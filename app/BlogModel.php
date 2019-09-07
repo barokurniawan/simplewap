@@ -15,8 +15,8 @@ class BlogModel extends Model
     // blog/read/(article slug).html
     const URI_SINGLE_ARTICLE = "blog/read/%s.html";
     const URI_ARTICLE_BY_CATEGORY = "category/%s.html";
-    const LINK_UPDATE = "dashboard/article/update/%s";
-    const LINK_DELETE = "dashboard/article/delete/%s";
+    const LINK_UPDATE = "article/update/%s";
+    const LINK_DELETE = "article/delete/%s";
 
     /**
      * Getter for ErrorMessage
@@ -65,19 +65,29 @@ class BlogModel extends Model
     {
         $blogModel = BlogModel::find($id);
         if ($blogModel == null) {
+            $this->setErrorMessage("Artikel tidak ditemukan");
             return false;
         }
 
         $blogModel->title = $blog->getTitle();
         $blogModel->slug = $blog->getSlug();
         $blogModel->description = $blog->getDescription();
-        $blogModel->read_count = $blog->getReadCount();
+
+        if ($blog->getReadCount() != null) {
+            $blogModel->read_count = $blog->getReadCount();
+        }
+
         return $blogModel->save();
     }
 
     public static function getArticle(string $slug)
     {
         return BlogModel::where("slug", $slug)->first();
+    }
+
+    public static function getArticleByID($article_id)
+    {
+        return BlogModel::find($article_id);
     }
 
     public static function advanceShowList(\App\Entity\QueryFilter $filter)

@@ -29,6 +29,8 @@ Route::post('/action/new-comment', "CommentController@createCommentHandler");
 
 Route::get("/external/redirect", "RedirectController@externalRedirectHandler");
 
+Route::get("/youtube-to-audio", "YoutubeDownloaderController@indexHandler")->name("YoutubeDownloaderRoute");
+
 Route::middleware("auth")->group(function () {
     Route::get('/dashboard', "PanelController@dashboardHandler")->name("dashboard");
     Route::get("dashboard/master-category", "PanelController@masterCategoryHandler")->name("master_category");
@@ -44,10 +46,12 @@ Route::middleware("auth")->group(function () {
     Route::post("dashboard/master-menu/update", "PanelController@actionUpdateMenuHandler");
 
     Route::get("dashboard/article", "PanelController@masterArticleHandler")->name("master_article");
-    Route::get("dashboard/article/delete/{article_id}", "PanelController@deleteArticleHandler");
 
     Route::get("article/composer", "ArticleController@composerHandler")->name("composer_article");
     Route::post("article/create", "ArticleController@actionCreateArticleHandler");
+    Route::get("article/update/{article_id}", "ArticleController@updateArticleHandler");
+    Route::post("article/update", "ArticleController@actionUpdateArticleHandler");
+    Route::get("article/delete/{article_id}", "PanelController@deleteArticleHandler");
 
     Route::post("jodit/uploader", "JoditController@uploaderHandler");
 });

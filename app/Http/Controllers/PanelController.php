@@ -7,7 +7,6 @@ use App\MenuModel;
 use App\CategoryModel;
 use App\Entity\QueryFilter;
 use Illuminate\Http\Request;
-use App\Kurniawan\Entity\Blog;
 use App\Kurniawan\Entity\Menu;
 use App\Kurniawan\Entity\Category;
 use Illuminate\Support\Facades\View;
