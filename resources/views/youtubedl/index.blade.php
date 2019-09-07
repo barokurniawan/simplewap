@@ -61,7 +61,10 @@
             <tr>
                 <td>Download</td>
                 <td>:</td>
-                <td><a href="{{ $item['url'] }}">Download</a></td>
+                <td>
+                    <a target="_blank" href="{{ $item['url'] }}" download>Download</a>
+                    {{ ($item['ext'] == "m4a") ? "(recommended)" : "" }}
+                </td>
             </tr>
         </tbody>
     </table>
