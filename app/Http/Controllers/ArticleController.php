@@ -27,7 +27,7 @@ class ArticleController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:120',
-            'description' => 'required|max:70',
+            'description' => 'required',
             'category_id' => 'required',
         ]);
 
