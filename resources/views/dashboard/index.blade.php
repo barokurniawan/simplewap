@@ -10,6 +10,9 @@
 
 <div class="title"><b>Admin Panel</b></div>
 <div class="menu">
+    <a href="article/composer">Tulias artikel</a>
+</div>
+<div class="menu">
     <a href="dashboard/master-menu">Data Menu</a>
 </div>
 <div class="menu">
