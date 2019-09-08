@@ -23,12 +23,12 @@ services:
       - database
 
   database:
-    image: mysql:5.6
+    image: mysql:5.7
     container_name: simplewap_mysql
     environment:
         MYSQL_ROOT_PASSWORD: "@@@udanup"
         MYSQL_DATABASE: db_simplewap
     volumes:
-      - /opt/docker_mysql_data:/var/lib/mysql
+      - /opt/simplewap_mysql:/var/lib/mysql
     ports:
       - "3306:3306"
