@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BlogModel;
 use App\MenuModel;
 use App\CategoryModel;
+use App\SimplewapSetting;
 use App\Entity\QueryFilter;
 use Illuminate\Http\Request;
 use App\Kurniawan\Entity\Menu;
@@ -217,6 +218,16 @@ class PanelController extends Controller
         ];
 
         return View::make("dashboard.master-article", $items);
+    }
+
+    function settingHandler(Request $request)
+    {
+        $items = [
+            "page_title" => "Master Kategori",
+            "list_setting" => SimplewapSetting::showList()
+        ];
+
+        return View::make("dashboard.setting", $items);
     }
 
     function deleteArticleHandler($article_id)

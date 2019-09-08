@@ -28,7 +28,9 @@
                 <tr>
                     <td>{{ $i+1 }}</td>
                     <td style="white-space: normal;">{{ $item->title }}</td>
-                    <td>{{ $item->category->category_name }}</td>
+                    <td>
+                        {{ ($item->category == null) ? \App\CategoryModel::DEFAULT_CATEGORY_NAME : $item->category->category_name }}
+                    </td>
                     <td>{{ date_format(new Datetime($item->created_at), "d/m/Y") }}</td>
                     <td>
                         <a href="{{ sprintf(App\BlogModel::LINK_UPDATE, $item->id) }}">[E]</a> |

@@ -11,9 +11,13 @@
 |
 */
 
+use App\SimplewapSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
+
+//load config
+SimplewapSetting::singleton();
 
 Auth::routes();
 Route::get('/home', 'ApplicationController@welcomePageHandler')->name('home');
@@ -47,6 +51,7 @@ Route::middleware("auth")->group(function () {
     Route::post("dashboard/master-menu/update", "PanelController@actionUpdateMenuHandler");
 
     Route::get("dashboard/article", "PanelController@masterArticleHandler")->name("master_article");
+    Route::get("dashboard/setting", "PanelController@settingHandler")->name("setting");
 
     Route::get("article/composer", "ArticleController@composerHandler")->name("composer_article");
     Route::post("article/create", "ArticleController@actionCreateArticleHandler");

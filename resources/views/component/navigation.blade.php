@@ -11,9 +11,13 @@
 
     @guest
     <div style="float: right">
+
+        @if (\App\SimplewapSetting::getConfig('SITE_REGISTRATION') == "OPEN")
         <span>
             <a href="register/">Daftar</a>
         </span>
+        @endif
+
         <span>
             <a href="login/">Masuk</a>
         </span>
