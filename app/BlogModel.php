@@ -71,6 +71,7 @@ class BlogModel extends Model
 
         $blogModel->title = $blog->getTitle();
         $blogModel->slug = $blog->getSlug();
+        $blogModel->category_id = $blog->getCategoryId();
         $blogModel->description = $blog->getDescription();
 
         if ($blog->getReadCount() != null) {
