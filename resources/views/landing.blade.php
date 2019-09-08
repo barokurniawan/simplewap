@@ -18,8 +18,8 @@
 
     <title>{{ sprintf("%s - %s", (isset($page_title) ? $page_title : $alt_title), env("APP_NAME")) }}</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
+    <meta name="keywords" content="{{ (isset($page_keyword) ? $page_keyword : "") }}" />
+    <meta name="description" content="{{ (isset($page_description) ? $page_description : "") }}" />
     <meta name="copyright" content="(c) simplewap.net 2012" />
     <meta name="author" content="{{ env('APP_AUTHOR') }}" />
     <meta name="email" content="{{ env('APP_AUTHOR') }}" />
