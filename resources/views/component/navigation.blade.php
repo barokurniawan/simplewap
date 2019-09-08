@@ -12,7 +12,7 @@
     @guest
     <div style="float: right">
 
-        @if (\App\SimplewapSetting::getConfig('SITE_REGISTRATION') == "OPEN")
+        @if (\App\SimplewapSetting::getConfig("SITE_REGISTRATION") == "open")
         <span>
             <a href="register/">Daftar</a>
         </span>

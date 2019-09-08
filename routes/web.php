@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
-//load config
-SimplewapSetting::singleton();
-
 Auth::routes();
 Route::get('/home', 'ApplicationController@welcomePageHandler')->name('home');
 Route::get('/', "ApplicationController@welcomePageHandler")->name("welcome_page");

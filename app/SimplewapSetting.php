@@ -10,49 +10,26 @@ class SimplewapSetting extends Model
     protected $table = 'wap_setting';
     protected $primaryKey = 'confkey';
     public $incrementing = false;
-    public $errorMessage;
     protected $configMap;
-    private static $instance;
 
     const SHOWLIST_CACHE_KEY = "setting:showlist";
     const LINK_UPDATE = "dashboard/setting/update/%s";
 
-    public function __construct()
+    public static function showList()
     {
         $fromCache = Cache::get(SimplewapSetting::SHOWLIST_CACHE_KEY);
         if ($fromCache == null) {
             $items = SimplewapSetting::get();
             Cache::put(SimplewapSetting::SHOWLIST_CACHE_KEY, $items->toJson(), Cache::ONE_DAY);
-            $this->generateMap($items);
-        } else {
-            $this->generateMap(json_decode($fromCache));
-        }
-    }
-
-    public static function singleton()
-    {
-        if (!isset(self::$instance)) {
-            self::$instance = new SimplewapSetting();
+            return $items;
         }
 
-        return self::$instance;
+        return json_decode($fromCache);
     }
 
-    public function getConfigMap()
+    public function initConfig()
     {
-        return $this->configMap;
-    }
-
-    public static function getConfig(string $key = null)
-    {
-        $model = SimplewapSetting::singleton();
-        $map = $model->getConfigMap();
-
-        if ($key == null) {
-            return $map;
-        }
-
-        return isset($map[$key]) ? $map[$key] : null;
+        return $this->generateMap(SimplewapSetting::showList());
     }
 
     private function generateMap($items)
@@ -66,25 +43,22 @@ class SimplewapSetting extends Model
         return $this;
     }
 
-    /**
-     * Getter for ErrorMessage
-     *
-     * @return [type]
-     */
-    public function getErrorMessage()
+    public function getConfigMap()
     {
-        return $this->errorMessage;
+        return $this->configMap;
     }
 
-    /**
-     * Setter for ErrorMessage
-     * @var [type] errorMessage
-     *
-     * @return self
-     */
-    public function setErrorMessage($errorMessage)
+    public static function getConfig(string $key = null)
     {
-        $this->errorMessage = $errorMessage;
-        return $this;
+        $model = new SimplewapSetting();
+        $model->initConfig();
+
+        $map = $model->getConfigMap();
+
+        if ($key == null) {
+            return $map;
+        }
+
+        return isset($map[$key]) ? $map[$key] : null;
     }
 }
