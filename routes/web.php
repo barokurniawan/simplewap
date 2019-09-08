@@ -11,12 +11,14 @@
 |
 */
 
-use App\SimplewapSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
-Auth::routes();
+Auth::routes([
+    'register' => false
+]);
+
 Route::get('/home', 'ApplicationController@welcomePageHandler')->name('home');
 Route::get('/', "ApplicationController@welcomePageHandler")->name("welcome_page");
 
