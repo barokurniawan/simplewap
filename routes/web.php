@@ -13,6 +13,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 Auth::routes();
 Route::get('/home', 'ApplicationController@welcomePageHandler')->name('home');
@@ -59,7 +60,8 @@ Route::middleware("auth")->group(function () {
 Route::get('/logout', function () {
     Auth::guard()->logout();
     session()->invalidate();
-    return redirect('/');
+
+    return Redirect::route("home");
 });
 
 Route::get('/loads', function () {
